@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".FindMasterActivity" />
         <activity android:name=".MasterListActivity" />
+        <activity android:name=".MasterDetailsActivity"></activity>
+        <activity android:name=".MasterListActivity" />
         <activity android:name=".FateSelectionActivity"></activity>
     </application>
 
