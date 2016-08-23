@@ -1,16 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tw.com.fateezgo.MainActivity">
+    tools:context="tw.com.fateezgo.MainActivity"
+    android:orientation="vertical"
+    android:background="#ffffff">
 
-    <TextView
-        android:layout_width="wrap_content"
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:gravity="center_horizontal"
+       android:layout_marginBottom="20dp"
+       android:layout_marginTop="50dp">
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/logo_tarot"
+           android:layout_marginTop="0dp" />
+
+   </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="25dp">
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text="命理諮詢"
+            android:id="@+id/btn01"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/button_shape_main"
+            android:textSize="23dp"
+            android:textColor="#0000ff" />
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text="免費諮詢"
+            android:id="@+id/btn02"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/button_shape_main"
+            android:textSize="23dp"
+            android:textColor="#0000ff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="25dp">
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text="每日運勢"
+            android:id="@+id/btn03"
+            android:background="@drawable/button_shape_main"
+            android:layout_marginRight="25dp"
+            android:textSize="23dp"
+            android:textColor="#0000ff" />
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text="會員專區"
+            android:id="@+id/btn04"
+            android:background="@drawable/button_shape_main"
+            android:layout_marginLeft="25dp"
+            android:textSize="23dp"
+            android:textColor="#0000ff" />
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>
