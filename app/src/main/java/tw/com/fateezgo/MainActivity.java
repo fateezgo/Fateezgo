@@ -18,10 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn01 = (Button) findViewById(R.id.btn01);
-        btn02 = (Button) findViewById(R.id.btn02);
-        btn03 = (Button) findViewById(R.id.btn03);
-        btn04 = (Button) findViewById(R.id.btn04);
+        findViews();
 
         btn01.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,5 +49,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void findViews() {
+        btn01 = (Button) findViewById(R.id.btn01);
+        btn02 = (Button) findViewById(R.id.btn02);
+        btn03 = (Button) findViewById(R.id.btn03);
+        btn04 = (Button) findViewById(R.id.btn04);
     }
 }
