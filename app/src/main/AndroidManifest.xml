@@ -8,8 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +19,8 @@
         <activity android:name=".MasterListActivity" />
         <activity android:name=".MasterDetailsActivity"/>
         <activity android:name=".FreeMasterActivity"/>
+        <activity android:name=".FateEveryDayActivity"/>
+        <activity android:name=".ModifyMemberActivity"/>
         <activity android:name=".FateSelectionActivity"></activity>
     </application>
 
