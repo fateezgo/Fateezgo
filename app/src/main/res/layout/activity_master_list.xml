@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="評價"
-            android:id="@+id/btn01"
+            android:id="@+id/mastEvabtn"
             android:textSize="50dp"
             android:background="@drawable/button_shape_master_list"
             android:textColor="#000000" />
@@ -31,7 +31,8 @@
             android:textSize="20dp"
             android:background="@drawable/button_shape_master_list"
             android:singleLine="true"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:id="@+id/mastDatatime" />
 
     </LinearLayout>
 
