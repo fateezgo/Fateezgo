@@ -8,19 +8,43 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DetailedOrderActivity" />
+        <activity android:name=".EvaluationActivity" />
+        <activity android:name=".EditNewActivity" />
         <activity android:name=".FindMasterActivity" />
         <activity android:name=".MasterListActivity" />
-        <activity android:name=".MasterDetailsActivity"/>
-        <activity android:name=".FreeMasterActivity"/>
-        <activity android:name=".FateSelectionActivity"></activity>
+        <activity android:name=".MasterDetailsActivity" />
+        <activity android:name=".MemberActivity" />
+        <activity android:name=".ModifyMasterActivity" />
+        <activity android:name=".ModifyMasterBasicActivity" />
+        <activity android:name=".ModifyMemberActivity" />
+        <activity android:name=".MasterEvaluationActivity" />
+        <activity android:name=".MasterNewActivity" />
+        <activity android:name=".FreeMasterActivity" />
+        <activity android:name=".FateEveryDayActivity" />
+        <activity android:name=".ConsultOnlineActivity" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".IntroductionActivity" />
+        <activity android:name=".NewListActivity" />
+        <activity android:name=".NotLoginActivity" />
+        <activity android:name=".OrderListActivity" />
+        <activity android:name=".PlaceActivity" />
+        <activity android:name=".ProfessionalActivity" />
+        <activity android:name=".PurchaseActivity" />
+        <activity android:name=".SetMasterScheduleActivity" />
+        <activity android:name=".ReservationActivity" />
+        <activity android:name=".RegistActivity" />
+        <activity android:name=".RegistMasterActivity" />
+        <activity android:name=".FateSelectionActivity" />
+        <activity android:name=".BasicActivity"></activity>
     </application>
 
 </manifest>
