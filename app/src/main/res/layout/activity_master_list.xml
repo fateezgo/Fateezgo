@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="最快可約時間"
-            android:textSize="20dp"
+            android:textSize="40dp"
             android:background="@drawable/button_shape_master_list"
             android:singleLine="true"
             android:textColor="#000000"
