@@ -33,7 +33,6 @@
             android:layout_height="match_parent"
             android:id="@+id/sp01"
             android:layout_weight="0.25"
-            android:entries="@array/Balls"
             android:focusableInTouchMode="true"
             android:spinnerMode="dropdown" />
 
