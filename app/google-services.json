@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "350228103940",
+    "firebase_url": "https://fateezgo-8f199.firebaseio.com",
+    "project_id": "fateezgo-8f199",
+    "storage_bucket": "fateezgo-8f199.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350228103940:android:8a0bd6f3c72fb381",
+        "android_client_info": {
+          "package_name": "tw.com.fateezgo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350228103940-qqetviiqkatqin54vtofuomal7nv9pi4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tw.com.fateezgo",
+            "certificate_hash": "D9945E5A3E068E4F5F8746E774CB98850E5B8E8E"
+          }
+        },
+        {
+          "client_id": "350228103940-l6sudtec0coudc9mc1neugn8i5eoge76.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnn0HRnZHYMbLboD6475fCVcUrcUtUxgc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350228103940-l6sudtec0coudc9mc1neugn8i5eoge76.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
