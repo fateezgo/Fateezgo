@@ -30,7 +30,7 @@ public class BasicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_basic);
 
         DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.52:8080/fateezgo/mem");
+        lt.execute("http://140.137.218.52:8080/fateezgo-ee/mem");
     }
 
     void doViews() {

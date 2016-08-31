@@ -29,7 +29,8 @@
         <activity android:name=".MasterNewActivity" />
         <activity android:name=".FreeMasterActivity" />
         <activity android:name=".FateEveryDayActivity" />
-        <activity android:name=".ConsultOnlineActivity" />
+        <activity android:name=".ConsultOnlineActivity">
+        </activity>
         <activity android:name=".ContactActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".IntroductionActivity" />
@@ -44,7 +45,10 @@
         <activity android:name=".RegistActivity" />
         <activity android:name=".RegistMasterActivity" />
         <activity android:name=".FateSelectionActivity" />
-        <activity android:name=".BasicActivity"></activity>
+        <activity android:name=".BasicActivity">
+        </activity>
+        <activity android:name=".SpreadActivity" />
+        <activity android:name=".CardActivity"></activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
