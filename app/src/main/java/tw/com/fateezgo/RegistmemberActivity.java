@@ -8,6 +8,6 @@ public class RegistMemberActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registmember);
+        setContentView(R.layout.activity_free_master);
     }
 }
