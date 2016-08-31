@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FFF"
+    android:background="#828080"
     android:orientation="vertical">
 
     <LinearLayout
@@ -33,9 +33,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/lblResult"
@@ -54,22 +54,20 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="請選擇類別"
-            android:id="@+id/textView"
-            android:layout_weight="1.00"
-            android:gravity="center" />
+            android:layout_height="wrap_content"
+            android:text="                                    請選擇類別                                "
+            android:id="@+id/textView" />
 
         <Spinner
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/spinner"
             android:spinnerMode="dropdown" />
 
@@ -128,4 +126,3 @@
         android:id="@+id/listView" />
 
 </LinearLayout>
-
