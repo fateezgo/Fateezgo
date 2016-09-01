@@ -49,6 +49,8 @@ public class MasterListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int type = intent.getIntExtra(qtype,FREE);
+        String profType = intent.getStringExtra("PROF");
+        System.out.println("專長="+profType);
         switch (type){
             case 100:
                 requestType="free";
@@ -60,15 +62,11 @@ public class MasterListActivity extends AppCompatActivity {
 
             case 300:
                 requestType="prof";
-                lt.execute("http://140.137.218.77:8080/fateezgo-ee/getmaster?qtype="+requestType);
+
+
+                lt.execute("http://140.137.218.77:8080/fateezgo-ee/getmaster?qtype="+requestType+"&profType="+profType);
             break;
         }
-
-
-
-
-
-
 
     }
 
@@ -150,7 +148,7 @@ public class MasterListActivity extends AppCompatActivity {
         protected void onPostExecute(ArrayList<String> strings) {
             super.onPostExecute(strings);
             for (int i = 0; i < strings.size(); i++) {
-                System.out.println(strings.get(i));
+
 
             }
             doViews();

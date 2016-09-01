@@ -32,6 +32,7 @@ public class GetmasterServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8"); 
 		request.setCharacterEncoding("UTF-8");
 		String requestType =request.getParameter("qtype");
+		String profType = request.getParameter("profType");
 	
 		DbHelper db = new DbHelper();
 
@@ -43,7 +44,17 @@ public class GetmasterServlet extends HttpServlet {
 								+ "ORDER BY MemberData.uid";
 			response.getWriter().append(db.query(s));
 		} else if(requestType.equals("prof")){
+			String s="";
+				switch (profType) {
+				case "astromast":
+					 s ="SELECT md.name, mp.professional FROM MemberData md JOIN MasProfData mp ON md.uid=mp.uid JOIN MasterData ma ON md.uid=ma.uid WHERE mp.professional=\"占星\"ORDER BY ma.evasum DESC";
+					break;
 
+				default:
+					break;
+				}
+			
+			response.getWriter().append(db.query(s));
 		}else {
 			
 		}

@@ -9,7 +9,7 @@ import android.widget.Button;
 public class FindMasterActivity extends AppCompatActivity {
 
     Button b01,b02,b03,b04,b05,b06,b07,b08,b09;
-    String astromast;
+    String astromast="astromast";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,8 @@ public class FindMasterActivity extends AppCompatActivity {
                 case R.id.btnastromast:
                     Intent intent = new Intent(FindMasterActivity.this, MasterListActivity.class);
                     intent.putExtra("QTYPE", MasterListActivity.PROF);
-                    intent.putExtra("PROE",astromast);
+                    intent.putExtra("PROF",astromast);
+
                     startActivity(intent);
             }
 
