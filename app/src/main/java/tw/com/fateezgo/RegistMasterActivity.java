@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class RegistmasterActivity extends AppCompatActivity implements View.OnClickListener
+public class RegistMasterActivity extends AppCompatActivity implements View.OnClickListener
 {
     protected EditText name,phone,passwd,retypepw,email,address,hyper;
     @Override
