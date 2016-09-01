@@ -1,5 +1,6 @@
 package tw.com.fateezgo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -60,11 +61,16 @@ public class RegistActivity extends AppCompatActivity implements Toolbar.OnMenuI
     @Override
     public void onClick(View v)
     {
+        Intent intent;
         switch (v.getId())
         {
             case R.id.teacherreg:
+                intent = new Intent(RegistActivity.this,RegistMasterActivity.class);
+                startActivity(intent);
                 break;
             case R.id.memberrage:
+                intent = new Intent(RegistActivity.this,RegistMemberActivity.class);
+                startActivity(intent);
                 break;
         }
     }

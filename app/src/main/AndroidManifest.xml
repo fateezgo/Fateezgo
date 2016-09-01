@@ -50,6 +50,7 @@
         <activity android:name=".ReservationActivity" />
         <activity android:name=".RegistActivity" />
         <activity android:name=".RegistMasterActivity" />
+        <activity android:name=".RegistMemberActivity" />
         <activity android:name=".FateSelectionActivity" />
         <activity android:name=".BasicActivity">
         </activity>

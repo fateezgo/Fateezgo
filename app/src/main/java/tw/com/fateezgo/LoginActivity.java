@@ -23,8 +23,7 @@ public class LoginActivity extends AppCompatActivity implements Toolbar.OnMenuIt
 {
     EditText userid,passwd;
 
-    String uid = userid.getText().toString();
-    String pw = String.valueOf(passwd.getText());
+    private String uid,pw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,11 +31,13 @@ public class LoginActivity extends AppCompatActivity implements Toolbar.OnMenuIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button login = (Button) this.findViewById(R.id.login);
 
         Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         toolbar.setOnMenuItemClickListener(this);
         setSupportActionBar(toolbar);
+
+        Button login = (Button) this.findViewById(R.id.login);
+
 
        if(getSupportActionBar() != null)
        {
@@ -67,7 +68,7 @@ public class LoginActivity extends AppCompatActivity implements Toolbar.OnMenuIt
     {
 
 
-        String urlname = "http://j.snpy.org/atm/login?userid="+uid+"&pw="+pw;
+        String urlname = "http://localhost:8080/fateezgo-ee/mem?name="+uid+"&passwd="+pw;
         if (v.getId() == R.id.login)
         {
             new loginTask().execute(urlname);
@@ -108,6 +109,8 @@ public class LoginActivity extends AppCompatActivity implements Toolbar.OnMenuIt
         @Override
         protected void onPostExecute(Integer data)
         {
+            uid = userid.getText().toString();
+            pw = String.valueOf(passwd.getText());
             if (data == 49)
             {
                 Toast.makeText(LoginActivity.this,"登入成功",Toast.LENGTH_LONG).show();
