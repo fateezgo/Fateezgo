@@ -3,12 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tw.com.fateezgo.MasterListActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/backgbase">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,33 +15,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="評價"
-            android:id="@+id/mastEvabtn"
+            android:id="@+id/btnEvamast"
             android:textSize="50dp"
-            android:background="@drawable/button_shape_master_list"
+            android:background="@drawable/btnevamast"
             android:textColor="#000000" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="最快可約時間"
             android:textSize="40dp"
-            android:background="@drawable/button_shape_master_list"
-            android:singleLine="true"
+            android:background="@drawable/btnearlyday"
+            android:singleLine="false"
             android:textColor="#000000"
             android:id="@+id/mastDatatime" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@drawable/bar_blue"></LinearLayout>
-
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewMastList"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/backgbase">
+
+    </ListView>
 
 </LinearLayout>
