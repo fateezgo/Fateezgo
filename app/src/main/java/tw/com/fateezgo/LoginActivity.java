@@ -1,5 +1,6 @@
 package tw.com.fateezgo;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -118,6 +119,11 @@ public class LoginActivity extends AppCompatActivity implements Toolbar.OnMenuIt
                 getIntent().putExtra("LOGIN_PASSWD",pw);
                 setResult(RESULT_OK,getIntent());
 
+                SharedPreferences preferences = getSharedPreferences("MemberLogin",MODE_PRIVATE);
+                preferences.edit()
+                        .putString("UserID",uid)
+                        .putString("Password",pw)
+                        .commit();
                 finish();
             }
             else
