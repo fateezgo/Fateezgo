@@ -7,7 +7,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +18,8 @@
         <activity android:name=".DetailedOrderActivity" />
         <activity android:name=".EvaluationActivity" />
         <activity android:name=".EditNewActivity" />
-        <activity android:name=".FindMasterActivity" />
+        <activity android:name=".FindMasterActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MasterListActivity" />
         <activity android:name=".MasterDetailsActivity" />
         <activity android:name=".MemberActivity" />
@@ -28,7 +29,12 @@
         <activity android:name=".MasterEvaluationActivity" />
         <activity android:name=".MasterNewActivity" />
         <activity android:name=".FreeMasterActivity" />
-        <activity android:name=".FateEveryDayActivity" />
+        <activity android:name=".FateEveryDayActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity android:name=".ConsultOnlineActivity">
         </activity>
         <activity android:name=".ContactActivity" />

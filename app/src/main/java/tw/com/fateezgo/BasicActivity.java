@@ -5,7 +5,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -27,10 +30,10 @@ public class BasicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_basic);
+        //setContentView(R.layout.activity_basic);
 
-        DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.52:8080/fateezgo-ee/mem");
+        //DbTask lt = new DbTask();
+        //lt.execute("http://140.137.218.52:8080/fateezgo-ee/mem");
     }
 
     void doViews() {
@@ -115,5 +118,25 @@ public class BasicActivity extends AppCompatActivity {
 
             doViews();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_basic, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_find_master:
+                Log.d("BasicActivity", "find master");
+                break;
+            case R.id.action_free_area:
+                Log.d("BasicActivity", "free area");
+                break;
+        }
+        return true;
     }
 }

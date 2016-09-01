@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_find_master"
+        android:title="找老師"
+        app:showAsAction="collapseActionView"/>
+    <item android:id="@+id/action_free_area"
+        android:title="免費專區"
+        app:showAsAction="collapseActionView"/>
+    <item android:id="@+id/action_fate_every_day"
+        android:title="每日運勢"
+        app:showAsAction="collapseActionView"/>
+    <item android:id="@+id/action_member"
+        android:title="會員專區"
+        app:showAsAction="collapseActionView"/>
+</menu>

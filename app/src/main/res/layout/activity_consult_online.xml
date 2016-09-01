@@ -39,16 +39,16 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send Msg"
-                android:id="@+id/b_send"
-                android:onClick="sendMsg" />
+                android:text="TarotCard"
+                android:id="@+id/b_func"
+                android:onClick="sendCard" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TarotCard"
-                android:id="@+id/b_tarot_card"
-                android:onClick="sendCard" />
+                android:text="Send Msg"
+                android:id="@+id/b_send"
+                android:onClick="sendMsg" />
         </LinearLayout>
     </LinearLayout>
 

@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 
-public class ConsultOnlineActivity extends AppCompatActivity {
+public class ConsultOnlineActivity extends BasicActivity {
 
     private static final int FUNC_CARD = 100;
     private static final int FUNC_CARD_SPREAD_SEL = 101;
@@ -65,8 +66,16 @@ public class ConsultOnlineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViews();
 
-        roomNo = "01";
-        name = System.currentTimeMillis() + "";
+        Intent intent = getIntent();
+        roomNo = intent.getIntExtra("OrderNo", 0) + "";
+        name = intent.getStringExtra("name");
+        if (name == null) {
+            name = System.currentTimeMillis() + "";
+        }
+        if (intent.getBooleanExtra("IsMaster", false) == false) {
+            Button b = (Button) findViewById(R.id.b_func);
+            b.setText("Send Serial No");
+        }
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAdapter = new FirebaseRecyclerAdapter<ChatMessage, MessageViewHolder>(
