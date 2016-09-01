@@ -137,6 +137,6 @@ public class BasicActivity extends AppCompatActivity {
                 Log.d("BasicActivity", "free area");
                 break;
         }
-        return true;
+        return false;
     }
 }
