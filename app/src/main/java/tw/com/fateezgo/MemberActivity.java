@@ -3,6 +3,7 @@ package tw.com.fateezgo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MemberActivity extends Activity {
+public class MemberActivity extends BasicActivity {
     // 1.宣告物件
     //
     private Button btnmember;
@@ -22,7 +23,7 @@ public class MemberActivity extends Activity {
     private TextView T01;
     private Spinner Sp01;
     private TextView T02;
-    String[] Balls = {"本頁", "首頁","找老師","AITEM"};
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,14 +35,8 @@ public class MemberActivity extends Activity {
         btnclass =(Button)findViewById(R.id.btnclass);
         btncontact =(Button)findViewById(R.id.btncontact);
         btnlogout =(Button)findViewById(R.id.btnlogout);
-        Sp01 = (Spinner) findViewById(R.id.sp01);
         T01 = (TextView) findViewById(R.id.t01);
-        T02 = (TextView) findViewById(R.id.t02);
-        ArrayAdapter<String> adapterBalls=new ArrayAdapter<String>
-                (this,android.R.layout.simple_spinner_item,Balls);
 
-        adapterBalls.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Sp01.setAdapter(adapterBalls);
 
         // 3.建立事件: 跳頁
         btnmember.setOnClickListener(new Button.OnClickListener(){
@@ -54,7 +49,7 @@ public class MemberActivity extends Activity {
             }});
         Toast.makeText(getApplicationContext(), "onCreate(1)", Toast.LENGTH_SHORT).show();
 
-        // 3.建立事件: 跳頁
+
         btnclass.setOnClickListener(new Button.OnClickListener(){
 
             public void onClick(View v) {
@@ -67,7 +62,6 @@ public class MemberActivity extends Activity {
 
 
 
-        // 3.建立事件: 跳頁
         btncontact.setOnClickListener(new Button.OnClickListener(){
 
             public void onClick(View v) {
@@ -79,7 +73,7 @@ public class MemberActivity extends Activity {
 
         Toast.makeText(getApplicationContext(), "onCreate(1)", Toast.LENGTH_SHORT).show();
 
-        // 3.建立事件: 跳頁
+
         btnlogout.setOnClickListener(new Button.OnClickListener(){
 
             public void onClick(View v) {
@@ -92,47 +86,7 @@ public class MemberActivity extends Activity {
         Toast.makeText(getApplicationContext(), "onCreate(1)", Toast.LENGTH_SHORT).show();
 
 
-
-
-
-        // 3.建立事件  spinner
-        Sp01.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
-
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-                // TODO Auto-generated method stub
-//                T02.setText(" 最喜歡的球類運動是："+Sp01.getSelectedItem().toString());
-                String choice = Sp01.getSelectedItem().toString();
-                T02.setText(" 選擇的頁面是：" + choice);
-
-
-                if (choice.equals("AITEM")) {
-                    Intent intent=new Intent();
-                    intent.setClass(MemberActivity.this,ContactActivity.class);
-                    startActivity(intent);
-                } else if (choice.equals("首頁")) {
-                    Intent intent=new Intent();
-                    intent.setClass(MemberActivity.this,ContactActivity.class);
-                    startActivity(intent);
-
-                } else if (choice.equals("找老師")) {
-                    Intent intent=new Intent();
-                    intent.setClass(MemberActivity.this,ContactActivity.class);
-                    startActivity(intent);
-                }
-
-            }
-
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
-
-            }
-        });
-
     } //on create end
-
-
-
 
 }
 
