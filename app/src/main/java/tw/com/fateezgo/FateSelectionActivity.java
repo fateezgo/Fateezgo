@@ -30,8 +30,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class FateSelectionActivity extends AppCompatActivity {
-    ArrayList<String>strlist=new ArrayList<String>();
+public class FateSelectionActivity extends BasicActivity{
     static ArrayList<CheckBox>checkBoxArrayList=new ArrayList<CheckBox>();
 
     private Button buy01;
@@ -42,14 +41,17 @@ public class FateSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fate_selection);
 
         checkBoxArrayList.clear();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         int id = 100;
-        MyTask mytask=new MyTask();
-        mytask.execute("http://140.137.218.94:8080/fateezgo/Purchase?id="+id);
+
+        DbTask lt = new DbTask();
+        lt.execute("http://140.137.218.94:8080/fateezgo/Purchase?id="+id);
+        //MyTask mytask=new MyTask();
+        //mytask.execute("http://140.137.218.94:8080/fateezgo/Purchase?id="+id);
 
         ListView listView = (ListView) this.findViewById(R.id.listview_class);
-        MyAdapter adapter = new MyAdapter(this,strlist);
+        MyAdapter adapter = new MyAdapter(this,strList);
         listView.setAdapter(adapter);
 
         buy01= (Button) findViewById(R.id.buy01);
@@ -60,7 +62,7 @@ public class FateSelectionActivity extends AppCompatActivity {
 
                 Intent intent=new Intent(getApplicationContext(),PurchaseActivity.class);
                 int count=0;
-                for (int i = 0; i < strlist.size(); i++) {
+                for (int i = 0; i < strList.size(); i++) {
                     CheckBox checkBox=checkBoxArrayList.get(i);
                     if (checkBox.isChecked()){
                         count++;
@@ -68,7 +70,7 @@ public class FateSelectionActivity extends AppCompatActivity {
                 }
                 String[] strArray = new String[count];
                 int cur = 0;
-                for (int i = 0; i < strlist.size(); i++) {
+                for (int i = 0; i < strList.size(); i++) {
                     CheckBox checkBox=checkBoxArrayList.get(i);
                     if (checkBox.isChecked()){
                         strArray[cur++]=checkBox.getText().toString();
@@ -98,7 +100,7 @@ public class FateSelectionActivity extends AppCompatActivity {
                 BufferedReader in=new BufferedReader(new InputStreamReader(is));
                 String strline;
                 while ((strline=in.readLine())!=null){
-                    strlist.add(strline);
+                    strList.add(strline);
                     System.out.println(strline);
                 }
                 in.close();
@@ -107,7 +109,7 @@ public class FateSelectionActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return strlist;
+            return strList;
 
         }
     }
