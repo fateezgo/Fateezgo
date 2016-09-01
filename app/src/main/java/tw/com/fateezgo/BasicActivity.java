@@ -25,7 +25,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class BasicActivity extends AppCompatActivity {
-    ArrayList<String> strList = new ArrayList<String>();
+    public ArrayList<String> strList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +116,7 @@ public class BasicActivity extends AppCompatActivity {
                 System.out.println(strings.get(i));
             }
 
-            doViews();
+            //doViews();
         }
     }
 
