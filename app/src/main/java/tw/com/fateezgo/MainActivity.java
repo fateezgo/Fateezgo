@@ -32,7 +32,8 @@ public class MainActivity extends BasicActivity {
         btn02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(getApplicationContext(),FreeMasterActivity.class);
+                Intent intent =new Intent(getApplicationContext(),MasterListActivity.class);
+                intent.putExtra("QTYPE", MasterListActivity.FREE);
                 startActivity(intent);
             }
         });
