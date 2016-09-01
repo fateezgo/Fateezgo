@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,18 +32,21 @@ import java.util.ArrayList;
 
 public class FateSelectionActivity extends AppCompatActivity {
     ArrayList<String>strlist=new ArrayList<String>();
+    static ArrayList<CheckBox>checkBoxArrayList=new ArrayList<CheckBox>();
+
     private Button buy01;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fate_selection);
+
+        checkBoxArrayList.clear();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         int id = 100;
         MyTask mytask=new MyTask();
-        mytask.execute("http://192.168.115.2:8080/fateezgo/Purchase?id="+id);
-
+        mytask.execute("http://140.137.218.94:8080/fateezgo/Purchase?id="+id);
 
         ListView listView = (ListView) this.findViewById(R.id.listview_class);
         MyAdapter adapter = new MyAdapter(this,strlist);
@@ -52,8 +56,30 @@ public class FateSelectionActivity extends AppCompatActivity {
         buy01.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("here here","msg");
+               // Log.d("here here","msg");
+
                 Intent intent=new Intent(getApplicationContext(),PurchaseActivity.class);
+                int count=0;
+                for (int i = 0; i < strlist.size(); i++) {
+                    CheckBox checkBox=checkBoxArrayList.get(i);
+                    if (checkBox.isChecked()){
+                        count++;
+                    }
+                }
+                String[] strArray = new String[count];
+                int cur = 0;
+                for (int i = 0; i < strlist.size(); i++) {
+                    CheckBox checkBox=checkBoxArrayList.get(i);
+                    if (checkBox.isChecked()){
+                        strArray[cur++]=checkBox.getText().toString();
+                    }
+                }
+
+                for (int i = 0; i < strArray.length; i++) {
+                    System.out.println(strArray[i]);
+                }
+
+                intent.putExtra("checkbox_info", strArray);
                 startActivity(intent);
             }
         });
@@ -73,7 +99,7 @@ public class FateSelectionActivity extends AppCompatActivity {
                 String strline;
                 while ((strline=in.readLine())!=null){
                     strlist.add(strline);
-                    //  System.out.println(strline);
+                    System.out.println(strline);
                 }
                 in.close();
             } catch (MalformedURLException e) {
@@ -113,7 +139,8 @@ public class FateSelectionActivity extends AppCompatActivity {
             TextView textInfo;
             textInfo = (TextView)view.findViewById(R.id.info_Id);
             textInfo.setText(strlist.get(position));
-
+            CheckBox checkBox= (CheckBox) view.findViewById(R.id.info_checkbox);
+            checkBoxArrayList.add(checkBox);
             return view;
         }
 
