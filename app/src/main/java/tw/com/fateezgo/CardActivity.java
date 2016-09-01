@@ -136,9 +136,11 @@ public class CardActivity extends AppCompatActivity {
                         Intent intent = getIntent();
                         intent.putExtra("spread", spreadLayout.getSpread());
                         String strCards = "";
-                        for (int i = 0; i < imgList.size(); i++) {
-                            ImageView img = (ImageView)imgList.get(i);
-                            strCards += ((int)img.getTag() + " ");
+                        ImageView img = (ImageView)imgList.get(0);
+                        strCards += (int)img.getTag();
+                        for (int i = 1; i < imgList.size(); i++) {
+                            img = (ImageView)imgList.get(i);
+                            strCards += (" " + (int)img.getTag());
                         }
                         intent.putExtra("cards", strCards);
                         setResult(RESULT_OK, intent);

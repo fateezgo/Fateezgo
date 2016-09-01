@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,7 +36,8 @@ public class FateEveryDayActivity extends BasicActivity {
             View v = layoutInflater.inflate(spreadLayout.getSpreadLayoutResId(), ll, true);
             int[] imgIds = spreadLayout.getSpreadImgResIds();
             ImageView img = (ImageView) v.findViewById(imgIds[0]);
-            img.setImageResource(CardActivity.imgIds[0]);
+            Log.d("FATE_ED", "cards: " + data.getStringExtra("cards"));
+            img.setImageResource(CardActivity.imgIds[Integer.valueOf(data.getStringExtra("cards"))]);
             Bitmap b = spreadLayout.createBitmap(v);
             imgCard.setImageBitmap(b);
         }
