@@ -65,7 +65,7 @@ public class RegistActivity extends AppCompatActivity implements Toolbar.OnMenuI
         switch (v.getId())
         {
             case R.id.teacherreg:
-                intent = new Intent(RegistActivity.this,RegistmasterActivity.class);
+                intent = new Intent(RegistActivity.this,RegistMasterActivity.class);
                 startActivity(intent);
                 break;
             case R.id.memberrage:
