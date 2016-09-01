@@ -1,13 +1,17 @@
 package tw.com.fateezgo;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
 
 
 public class EvaluationActivity extends Activity {
@@ -18,14 +22,14 @@ public class EvaluationActivity extends Activity {
     private RatingBar ratingBar;
     private TextView txtRatingValue;
     private Button btnSubmit;
-    String[] Balls = {"籃球", "足球","棒球","其他"};
+    String[] Balls = {"星座", "塔羅","八字","其他"};
     private Spinner Sp01;
     private TextView Tspinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_evaluation);
         //2.連結元件
         Sp01 =(Spinner) findViewById(R.id.spinner);
         Tspinner = (TextView) findViewById(R.id.textviewspinner);
@@ -48,7 +52,7 @@ public class EvaluationActivity extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 // TODO Auto-generated method stub
-                Tspinner.setText(" 最喜歡的球類運動是："+Sp01.getSelectedItem().toString());
+                Tspinner.setText(" 選擇的項目是："+Sp01.getSelectedItem().toString());
             }
 
             public void onNothingSelected(AdapterView<?> arg0) {
@@ -171,4 +175,3 @@ public class EvaluationActivity extends Activity {
 
 
 }
-
