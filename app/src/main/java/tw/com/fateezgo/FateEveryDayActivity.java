@@ -24,22 +24,35 @@ public class FateEveryDayActivity extends BasicActivity {
         Intent intent = new Intent(this, CardActivity.class);
         intent.putExtra("spread", SpreadLayout.SPREAD_EVERY_DAY);
         startActivityForResult(intent,  FUNC_CARD);
+
+        // test
+        //member.getMemberData(this);
+        //Log.d("FATE_ED", "mem name: " + member.name());
+        //member.setMemberData(this, true, 2, "belle", "123321", "0937000000", "ed@g.com", false);
+        //Log.d("FATE_ED", "mem name: " + member.name());
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if ((requestCode == FUNC_CARD) && (resultCode == RESULT_OK)) {
-            LayoutInflater layoutInflater = getLayoutInflater();
-            LinearLayout ll = new LinearLayout(getApplicationContext());
-            SpreadLayout spreadLayout = new SpreadLayout(SpreadLayout.SPREAD_EVERY_DAY);
-            View v = layoutInflater.inflate(spreadLayout.getSpreadLayoutResId(), ll, true);
-            int[] imgIds = spreadLayout.getSpreadImgResIds();
-            ImageView img = (ImageView) v.findViewById(imgIds[0]);
-            Log.d("FATE_ED", "cards: " + data.getStringExtra("cards"));
-            img.setImageResource(CardActivity.imgIds[Integer.valueOf(data.getStringExtra("cards"))]);
-            Bitmap b = spreadLayout.createBitmap(v);
-            imgCard.setImageBitmap(b);
+        if (requestCode == FUNC_CARD) {
+            if (resultCode == RESULT_OK) {
+                LayoutInflater layoutInflater = getLayoutInflater();
+                LinearLayout ll = new LinearLayout(getApplicationContext());
+                SpreadLayout spreadLayout = new SpreadLayout(SpreadLayout.SPREAD_EVERY_DAY);
+                View v = layoutInflater.inflate(spreadLayout.getSpreadLayoutResId(), ll, true);
+                int[] imgIds = spreadLayout.getSpreadImgResIds();
+                ImageView img = (ImageView) v.findViewById(imgIds[0]);
+                Log.d("FATE_ED", "cards: " + data.getStringExtra("cards"));
+                img.setImageResource(CardActivity.imgIds[Integer.valueOf(data.getStringExtra("cards"))]);
+                Bitmap b = spreadLayout.createBitmap(v);
+                imgCard.setImageBitmap(b);
+            }
+            else {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
     }
 }

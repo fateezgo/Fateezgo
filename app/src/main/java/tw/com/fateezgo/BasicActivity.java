@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 public class BasicActivity extends AppCompatActivity {
     public ArrayList<String> strList = new ArrayList<String>();
+    public Member member;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class BasicActivity extends AppCompatActivity {
 
         //DbTask lt = new DbTask();
         //lt.execute("http://140.137.218.52:8080/fateezgo-ee/mem");
+
+        member = Member.getInstance();
     }
 
     void doViews() {
@@ -85,7 +88,6 @@ public class BasicActivity extends AppCompatActivity {
         }
     }
 
-
     class DbTask extends AsyncTask<String, Void, ArrayList<String>> {
 
         @Override
@@ -128,13 +130,21 @@ public class BasicActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.action_find_master:
                 Log.d("BasicActivity", "find master");
                 break;
             case R.id.action_free_area:
                 Log.d("BasicActivity", "free area");
+                break;
+            case R.id.action_fate_every_day:
+                intent = new Intent(this, FateEveryDayActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.action_member:
+                Log.d("BasicActivity", "member");
                 break;
         }
         return false;

@@ -68,10 +68,7 @@ public class ConsultOnlineActivity extends BasicActivity {
 
         Intent intent = getIntent();
         roomNo = intent.getIntExtra("OrderNo", 0) + "";
-        name = intent.getStringExtra("name");
-        if (name == null) {
-            name = System.currentTimeMillis() + "";
-        }
+        name = member.name();
         if (intent.getBooleanExtra("IsMaster", false) == false) {
             Button b = (Button) findViewById(R.id.b_func);
             b.setText("Send Serial No");
