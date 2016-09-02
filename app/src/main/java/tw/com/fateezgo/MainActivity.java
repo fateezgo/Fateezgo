@@ -62,4 +62,9 @@ public class MainActivity extends BasicActivity {
         btn03 = (Button) findViewById(R.id.btn03);
         btn04 = (Button) findViewById(R.id.btn04);
     }
+
+    @Override
+    void doViews() {
+        // do nothing
+    }
 }

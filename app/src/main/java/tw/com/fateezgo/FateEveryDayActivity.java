@@ -33,6 +33,11 @@ public class FateEveryDayActivity extends BasicActivity {
     }
 
     @Override
+    void doViews() {
+        // do nothing
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FUNC_CARD) {

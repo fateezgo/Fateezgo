@@ -88,6 +88,10 @@ public class MemberActivity extends BasicActivity {
 
     } //on create end
 
+    @Override
+    void doViews() {
+        // do nothing
+    }
 }
 
 

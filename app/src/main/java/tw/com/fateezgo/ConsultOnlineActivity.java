@@ -199,5 +199,10 @@ public class ConsultOnlineActivity extends BasicActivity {
             mDatabase.child("messages-" + roomNo).push().setValue(chatMessage);
         }
     }
+
+    @Override
+    void doViews() {
+        // do nothing
+    }
 }
 

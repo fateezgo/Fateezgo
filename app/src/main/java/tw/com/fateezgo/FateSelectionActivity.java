@@ -153,4 +153,8 @@ public class FateSelectionActivity extends BasicActivity{
         }
     }
 
+    @Override
+    void doViews() {
+
+    }
 }
