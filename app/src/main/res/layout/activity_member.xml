@@ -12,7 +12,9 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,31 +26,17 @@
             android:textSize="50dp"
             android:textAlignment="center"
             android:background="@drawable/button_shape_master_list"
-            android:layout_marginLeft="50dp" />
-
-        <Spinner
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:id="@+id/sp01"
-            android:focusableInTouchMode="false"
-            android:spinnerMode="dropdown" />
+            android:gravity="center" />
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/t02"
-        android:textSize="20dp" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="40dp"
         android:gravity="top|center_horizontal">
 
         <Button

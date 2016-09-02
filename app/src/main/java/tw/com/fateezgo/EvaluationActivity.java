@@ -1,5 +1,6 @@
 package tw.com.fateezgo;
 
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 
 
 
-public class EvaluationActivity extends Activity {
+public class EvaluationActivity extends BasicActivity {
     /** Called when the activity is first created. */
     //1.宣告物件
     private Button BClear,BOK,BEnd;
@@ -22,9 +23,9 @@ public class EvaluationActivity extends Activity {
     private RatingBar ratingBar;
     private TextView txtRatingValue;
     private Button btnSubmit;
-    String[] Balls = {"星座", "塔羅","八字","其他"};
+    String[] Balls = {"星座", "塔羅","占星","其他"};
     private Spinner Sp01;
-    private TextView Tspinner;
+//    private TextView Tspinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class EvaluationActivity extends Activity {
         setContentView(R.layout.activity_evaluation);
         //2.連結元件
         Sp01 =(Spinner) findViewById(R.id.spinner);
-        Tspinner = (TextView) findViewById(R.id.textviewspinner);
+//        Tspinner = (TextView) findViewById(R.id.textviewspinner);
         ArrayAdapter<String> adapterBalls=new ArrayAdapter<String>
                 (this,android.R.layout.simple_spinner_item,Balls);
 
@@ -52,7 +53,7 @@ public class EvaluationActivity extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 // TODO Auto-generated method stub
-                Tspinner.setText(" 選擇的項目是："+Sp01.getSelectedItem().toString());
+                //Tspinner.setText(" 選擇的項目是："+Sp01.getSelectedItem().toString());
             }
 
             public void onNothingSelected(AdapterView<?> arg0) {
@@ -169,8 +170,6 @@ public class EvaluationActivity extends Activity {
         });
 
     }
-
-
 
 
 
