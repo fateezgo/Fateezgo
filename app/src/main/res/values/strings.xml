@@ -7,4 +7,5 @@
         <item>排球</item>
         <item>其他</item>
     </string-array>
+    <string name="title_activity_detailed_order_maps">Map</string>
 </resources>

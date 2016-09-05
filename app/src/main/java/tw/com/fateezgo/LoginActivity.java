@@ -1,5 +1,6 @@
 package tw.com.fateezgo;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
@@ -20,7 +21,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class LoginActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener, View.OnClickListener
+public class LoginActivity extends BasicActivity implements Toolbar.OnMenuItemClickListener, View.OnClickListener
 {
     EditText userid,passwd;
 
@@ -50,6 +51,12 @@ public class LoginActivity extends AppCompatActivity implements Toolbar.OnMenuIt
         passwd = (EditText) this.findViewById(R.id.passwd);
 
         login.setOnClickListener(this);
+    }
+
+    @Override
+    void doViews()
+    {
+
     }
 
     @Override
@@ -119,12 +126,10 @@ public class LoginActivity extends AppCompatActivity implements Toolbar.OnMenuIt
                 getIntent().putExtra("LOGIN_PASSWD",pw);
                 setResult(RESULT_OK,getIntent());
 
-                SharedPreferences preferences = getSharedPreferences("MemberLogin",MODE_PRIVATE);
-                preferences.edit()
-                        .putString("UserID",uid)
-                        .putString("Password",pw)
-                        .commit();
-                finish();
+                SharedPreferences sharedPreferences = getSharedPreferences("mem",MODE_PRIVATE);
+                Member m = new Member();
+                m.setMemberData((Context) sharedPreferences,true,m.uid(),m.name(),pw,m.phone(),m.email(),m.isMaster());
+
             }
             else
             {
@@ -135,5 +140,7 @@ public class LoginActivity extends AppCompatActivity implements Toolbar.OnMenuIt
                         .show();
             }
         }
+
+
     }
 }

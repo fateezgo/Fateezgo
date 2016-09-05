@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tw.com.fateezgo">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,8 +23,9 @@
         <activity android:name=".DetailedOrderActivity" />
         <activity android:name=".EvaluationActivity" />
         <activity android:name=".EditNewActivity" />
-        <activity android:name=".FindMasterActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".FindMasterActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MasterListActivity" />
         <activity android:name=".MasterDetailsActivity" />
         <activity android:name=".MemberActivity" />
@@ -29,14 +35,14 @@
         <activity android:name=".MasterEvaluationActivity" />
         <activity android:name=".MasterNewActivity" />
         <activity android:name=".FreeMasterActivity" />
-        <activity android:name=".FateEveryDayActivity"
+        <activity
+            android:name=".FateEveryDayActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ConsultOnlineActivity">
-        </activity>
+        <activity android:name=".ConsultOnlineActivity"></activity>
         <activity android:name=".ContactActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".IntroductionActivity" />
@@ -52,10 +58,26 @@
         <activity android:name=".RegistMasterActivity" />
         <activity android:name=".RegistMemberActivity" />
         <activity android:name=".FateSelectionActivity" />
-        <activity android:name=".BasicActivity">
-        </activity>
+
         <activity android:name=".SpreadActivity" />
-        <activity android:name=".CardActivity"></activity>
+        <activity android:name=".CardActivity" />
+
+        <uses-library android:name="com.google.android.maps" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".DetailedOrderMapsActivity"
+            android:label="@string/title_activity_detailed_order_maps"></activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
 </manifest>

@@ -20,7 +20,7 @@ public class DbHelper {
 			e.printStackTrace();
 		}
 	}
-	String query(String qStr) {
+	public String query(String qStr) {
 		String str = "";
 		Statement s;
 		try {
@@ -42,5 +42,25 @@ public class DbHelper {
 		
 		return str;
 	}
+	public int update(String updateStr) {
+		Statement s;
+		int rowCount = 0;
+		try {
+			s = conn.createStatement();
+			rowCount = s.executeUpdate(updateStr);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rowCount;
+	}
+	public void finish() {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}	
 }
 

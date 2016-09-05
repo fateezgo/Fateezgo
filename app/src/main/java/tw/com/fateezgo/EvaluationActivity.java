@@ -227,6 +227,8 @@ public class EvaluationActivity extends BasicActivity {
         });
     }
 
+    @Override
+    void doViews() {
 
-
+    }
 }

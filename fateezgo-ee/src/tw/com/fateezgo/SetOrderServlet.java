@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tw.com.fateezgo.DbHelper;
-
 /**
- * Servlet implementation class MemServlet
+ * Servlet implementation class SetOrderServlet
  */
-@WebServlet("/mem")
-public class MemServlet extends HttpServlet {
+@WebServlet("/SetOrder")
+public class SetOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemServlet() {
+    public SetOrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,8 +27,8 @@ public class MemServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DbHelper db = new DbHelper();
-		String s = "Select name, email from MemberData;";
-		response.getWriter().append(db.query(s));
+		String s = "UPDATE OrderData SET star=4 where id=1";
+		db.update(s);
 		db.finish();
 	}
 

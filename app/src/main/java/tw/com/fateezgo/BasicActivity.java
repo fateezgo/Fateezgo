@@ -24,7 +24,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class BasicActivity extends AppCompatActivity {
+abstract class BasicActivity extends AppCompatActivity {
     public ArrayList<String> strList = new ArrayList<String>();
     public Member member;
 
@@ -37,9 +37,10 @@ public class BasicActivity extends AppCompatActivity {
         //lt.execute("http://140.137.218.52:8080/fateezgo-ee/mem");
 
         member = Member.getInstance();
+        member.getMemberData(this);
     }
 
-    void doViews() {
+    abstract void doViews();/* {
         MyAdapter adapter = new MyAdapter(this);
         ListView lv = (ListView) findViewById(R.id.base_list_view);
         lv.setAdapter(adapter);
@@ -49,7 +50,7 @@ public class BasicActivity extends AppCompatActivity {
                 // do when item i is clicked
             }
         });
-    }
+    }*/
 
     class MyAdapter extends BaseAdapter {
         LayoutInflater inflater;
@@ -118,7 +119,7 @@ public class BasicActivity extends AppCompatActivity {
                 System.out.println(strings.get(i));
             }
 
-            //doViews();
+            doViews();
         }
     }
 
