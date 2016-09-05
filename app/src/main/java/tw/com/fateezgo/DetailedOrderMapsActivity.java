@@ -11,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.identity.intents.Address;
@@ -38,6 +39,11 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
     private GoogleMap mMap;
     boolean isMapReady = false;
     boolean isDataReady = false;
+    private String serialNo;
+    private TextView tvSN;
+    private EditText edSN;
+    private Button bOnline;
+    private boolean isOnline = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +76,12 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
             tvMaster.setText(strArray[0]);
             tvDate.setText(strArray[1]);
             tvPlace.setText(strArray[2]);
-            String serialNo = strArray[4];
+            if (isOnline) {
+                bOnline.setVisibility(View.VISIBLE);
+            }
+            serialNo = strArray[4];
+            tvSN.setText(serialNo);
+            edSN.setVisibility(View.INVISIBLE);
             String eState = strArray[3];
             if (eState.equals("N")) {
                 bFunc.setVisibility(View.VISIBLE);
@@ -123,6 +134,9 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
         tvDate = (TextView) findViewById(R.id.tv_r_date);
         tvPlace = (TextView) findViewById(R.id.tv_r_place);
         bFunc = (Button) findViewById(R.id.b_evaluate);
+        tvSN = (TextView) findViewById(R.id.tv_sn);
+        edSN = (EditText) findViewById(R.id.ed_sn);
+        bOnline = (Button) findViewById(R.id.b_online);
     }
 
     @Override
@@ -204,5 +218,12 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll, 16));
         }
         return false;
+    }
+
+    void consultOnline(View v) {
+        Intent intent = new Intent(this, ConsultOnlineActivity.class);
+        intent.putExtra("order_id", orderId);
+        intent.putExtra("order_sn", serialNo);
+        startActivity(intent);
     }
 }

@@ -9,7 +9,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
 
     tools:context="tw.com.fateezgo.DetailedOrderMapsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/backgbase">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -70,6 +71,14 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/tv_r_place" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="線上諮詢"
+            android:id="@+id/b_online"
+            android:onClick="consultOnline"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -96,11 +105,30 @@
             android:layout_weight="1"
             android:gravity="right">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="憑證序號："
+                android:id="@+id/textView26" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tv_sn" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ed_sn" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/b_evaluate"
                 android:visibility="invisible" />
+
         </LinearLayout>
 
     </LinearLayout>

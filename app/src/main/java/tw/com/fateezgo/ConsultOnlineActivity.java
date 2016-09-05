@@ -38,6 +38,8 @@ public class ConsultOnlineActivity extends BasicActivity {
     private FirebaseRecyclerAdapter<ChatMessage, MessageViewHolder> mAdapter;
 
     ImageView lastCardFunc;
+    private boolean isMaster = false;
+    private String sn = "";
 
     public static class MessageViewHolder extends RecyclerView.ViewHolder {
         public TextView tvName;
@@ -67,9 +69,10 @@ public class ConsultOnlineActivity extends BasicActivity {
         findViews();
 
         Intent intent = getIntent();
-        roomNo = intent.getIntExtra("OrderNo", 0) + "";
+        roomNo = intent.getIntExtra("order_no", 0) + "";
+        sn = intent.getStringExtra("order_sn");
         name = member.name();
-        if (intent.getBooleanExtra("IsMaster", false) == false) {
+        if (isMaster == false) {
             Button b = (Button) findViewById(R.id.b_func);
             b.setText("Send Serial No");
         }
@@ -178,18 +181,21 @@ public class ConsultOnlineActivity extends BasicActivity {
         edMsg.setText("");
     }
 
-    public void sendCard(View v) {
-        Intent intent = new Intent(this, SpreadActivity.class);
-        startActivityForResult(intent, FUNC_CARD_SPREAD_SEL);
+    public void sendFunc(View v) {
+        if (isMaster == false) {
+            ChatMessage chatMessage = new ChatMessage(name, "MSG", "憑證序號："+sn, System.currentTimeMillis()+"");
+            mDatabase.child("messages-"+ roomNo).push().setValue(chatMessage);
+        }
+        else {
+            Intent intent = new Intent(this, SpreadActivity.class);
+            startActivityForResult(intent, FUNC_CARD_SPREAD_SEL);
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if ((requestCode == FUNC_CARD) && (resultCode == RESULT_OK)) {
-            //Bundle bundle = data.getExtras();
-            //Bitmap bitmap = bundle.getParcelable("ImgBitmapCard");
-            //cardFunc.setImageBitmap(bitmap);
             String strCardRes = data.getIntExtra("spread", 0) + " " + data.getStringExtra("cards");
             ChatMessage chatMessage = new ChatMessage(name, "CARD_RES", strCardRes, System.currentTimeMillis()+"");
             mDatabase.child("messages-"+ roomNo).push().setValue(chatMessage);
