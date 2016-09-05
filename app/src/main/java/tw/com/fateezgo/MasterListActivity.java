@@ -62,8 +62,6 @@ public class MasterListActivity extends AppCompatActivity {
 
             case 300:
                 requestType="prof";
-
-
                 lt.execute("http://140.137.218.77:8080/fateezgo-ee/getmaster?qtype="+requestType+"&profType="+profType);
             break;
         }

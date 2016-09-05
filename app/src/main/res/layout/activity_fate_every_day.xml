@@ -16,7 +16,8 @@
         android:id="@+id/img_card"
         android:layout_weight="1"
         android:longClickable="true"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:background="@drawable/backgbase"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,5 +26,6 @@
         android:text="Medium Text"
         android:id="@+id/tv_msg"
         android:layout_weight="1"
-        android:gravity="center_vertical|center_horizontal" />
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@drawable/backgbase"/>
 </LinearLayout>
