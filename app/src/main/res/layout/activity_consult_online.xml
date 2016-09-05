@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tw.com.fateezgo.ConsultOnlineActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/backgbase">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/msg_recycler_view"

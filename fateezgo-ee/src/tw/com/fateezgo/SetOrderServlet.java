@@ -27,7 +27,17 @@ public class SetOrderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DbHelper db = new DbHelper();
-		String s = "UPDATE OrderData SET star=4 where id=1";
+		String type = request.getParameter("type");
+		String s = "";
+		if (type.equals("estate")) {
+			String estate = request.getParameter("value");
+			String id = request.getParameter("id");
+			s = "UPDATE OrderData SET estate='" + estate + "' where id=" + id + ";";
+			System.out.println(s);
+		}
+		else {
+			s = "UPDATE OrderData SET star=4 where id=1;";
+		}
 		db.update(s);
 		db.finish();
 	}
