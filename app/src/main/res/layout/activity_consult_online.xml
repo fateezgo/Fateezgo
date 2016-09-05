@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="TarotCard"
                 android:id="@+id/b_func"
-                android:onClick="sendCard" />
+                android:onClick="sendFunc" />
 
             <Button
                 android:layout_width="wrap_content"
