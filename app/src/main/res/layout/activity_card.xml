@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tw.com.fateezgo.CardActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/backgbase">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,7 +17,8 @@
         android:layout_height="0dp"
         android:layout_weight="6"
         android:id="@+id/result"
-        android:gravity="center_vertical|center_horizontal">
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@drawable/backgbase">
 
     </LinearLayout>
 

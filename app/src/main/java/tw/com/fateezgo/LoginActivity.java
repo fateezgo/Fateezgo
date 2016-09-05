@@ -27,28 +27,19 @@ public class LoginActivity extends BasicActivity implements Toolbar.OnMenuItemCl
 
     private String uid,pw;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-        Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
-        toolbar.setOnMenuItemClickListener(this);
-        setSupportActionBar(toolbar);
-
         Button login = (Button) this.findViewById(R.id.login);
-
-
-       if(getSupportActionBar() != null)
-       {
-           getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-           getSupportActionBar().setHomeButtonEnabled(true);
-       }
 
         userid = (EditText) this.findViewById(R.id.userid);
         passwd = (EditText) this.findViewById(R.id.passwd);
+        uid = userid.getText().toString();
+        pw = passwd.getText().toString();
 
         login.setOnClickListener(this);
     }
@@ -74,9 +65,7 @@ public class LoginActivity extends BasicActivity implements Toolbar.OnMenuItemCl
     @Override
     public void onClick(View v)
     {
-
-
-        String urlname = "http://localhost:8080/fateezgo-ee/mem?name="+uid+"&passwd="+pw;
+        String urlname = "http://140.137.218.77:8080/fateezgo-ee/mem?name="+uid+"&passwd="+pw;
         if (v.getId() == R.id.login)
         {
             new loginTask().execute(urlname);
