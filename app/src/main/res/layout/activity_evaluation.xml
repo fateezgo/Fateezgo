@@ -39,13 +39,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/lblResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Result : "
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
             android:id="@+id/txtRatingValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,31 +67,25 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textviewspinner"
-        android:layout_gravity="right" />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="274dp"
-        android:id="@+id/editText"
-        android:layout_weight="0.48" />
+        android:id="@+id/message"
+        android:textColor="#3956e4"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="可輸入500個字"
+        android:text="可輸入200個字"
         android:id="@+id/textView2" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="將這個意見存到我的電腦中"
-        android:id="@+id/checkBox"
+        android:id="@+id/cb1"
         android:checked="false"
         android:textSize="15dp" />
 
