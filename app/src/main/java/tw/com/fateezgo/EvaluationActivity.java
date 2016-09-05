@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
@@ -23,25 +26,35 @@ public class EvaluationActivity extends BasicActivity {
     private RatingBar ratingBar;
     private TextView txtRatingValue;
     private Button btnSubmit;
-    String[] Balls = {"星座", "塔羅","占星","其他"};
+    String[] Balls = {"塔羅","八字", "占星", "其他"};
     private Spinner Sp01;
+
 //    private TextView Tspinner;
+    String str_taro = "塔羅好棒!";
+    String str_eight = "八字太神奇了" ;
+    String str_astrology = "占星真美好!";
+    String str_others = "世界真美妙!";
+    private EditText ET01;
+    private CheckBox CB1;
+    private CompoundButton.OnCheckedChangeListener mylistener;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluation);
         //2.連結元件
-        Sp01 =(Spinner) findViewById(R.id.spinner);
+        Sp01 = (Spinner) findViewById(R.id.spinner);
 //        Tspinner = (TextView) findViewById(R.id.textviewspinner);
-        ArrayAdapter<String> adapterBalls=new ArrayAdapter<String>
-                (this,android.R.layout.simple_spinner_item,Balls);
+        ArrayAdapter<String> adapterBalls = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item, Balls);
 
         adapterBalls.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Sp01.setAdapter(adapterBalls);
 
-
-        ;
+        ET01 = (EditText) findViewById(R.id.message);
+        CB1 = (CheckBox) findViewById(R.id.cb1);
+        String str_message;
 //        BClear=(Button)   this.findViewById(R.id.bClear);
 //        BOK=(Button)   this.findViewById(R.id.bOK);
 //        BEnd=(Button)   this.findViewById(R.id.bEnd);
@@ -53,7 +66,28 @@ public class EvaluationActivity extends BasicActivity {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 // TODO Auto-generated method stub
-                //Tspinner.setText(" 選擇的項目是："+Sp01.getSelectedItem().toString());
+
+                switch (position) {
+                    case 0:
+                        ET01.setText(str_taro);
+                        break;
+
+                    case 1:
+                        ET01.setText(str_eight);
+                        break;
+
+                    case 2:
+                        ET01.setText(str_astrology);
+                        break;
+
+                    case 3:
+                        ET01.setText(str_others);
+                        break;
+
+
+                }
+
+
             }
 
             public void onNothingSelected(AdapterView<?> arg0) {
@@ -62,6 +96,25 @@ public class EvaluationActivity extends BasicActivity {
             }
 
         });
+
+
+        
+        CB1.setOnCheckedChangeListener(mylistener);
+        CheckBox.OnCheckedChangeListener mylistener = new CheckBox.OnCheckedChangeListener() {
+
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+
+                if (CB1.isChecked()) {
+                    boolean cb1_flag = true;
+                    ET01.setText("select!");
+                } else {
+                    boolean cb1_flag = false;
+                    ET01.setText("NO select!");
+                }
+
+            }
+        };
 
 
 //        BClear.setOnClickListener(new Button.OnClickListener(){
@@ -130,6 +183,9 @@ public class EvaluationActivity extends BasicActivity {
 
 
     }
+
+
+
     private void show() {
     }
 
@@ -144,7 +200,7 @@ public class EvaluationActivity extends BasicActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating,
                                         boolean fromUser) {
 
-                txtRatingValue.setText(String.valueOf(rating));
+//                txtRatingValue.setText(String.valueOf(rating));
 
             }
         });
@@ -160,7 +216,8 @@ public class EvaluationActivity extends BasicActivity {
 
             @Override
             public void onClick(View v) {
-
+                String starvalue = String.valueOf(ratingBar.getRating());
+//                lt.execute("http://192.168.1.102:8080/fateezgo-ee/weav?starno="+starvalue);
                 Toast.makeText(EvaluationActivity.this,
                         String.valueOf(ratingBar.getRating()),
                         Toast.LENGTH_SHORT).show();
@@ -168,7 +225,6 @@ public class EvaluationActivity extends BasicActivity {
             }
 
         });
-
     }
 
 
