@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#828080"
+    android:background="@drawable/backgbase"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:baselineAligned="true">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -78,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="可輸入200個字"
+        android:text="可輸入300個字"
         android:id="@+id/textView2" />
 
     <CheckBox

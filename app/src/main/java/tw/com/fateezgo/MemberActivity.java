@@ -38,7 +38,7 @@ public class MemberActivity extends BasicActivity {
         T01 = (TextView) findViewById(R.id.t01);
 
 
-        // 3.建立事件: 跳頁
+        // 3.建立事件:
         btnmember.setOnClickListener(new Button.OnClickListener(){
 
             public void onClick(View v) {
@@ -47,7 +47,7 @@ public class MemberActivity extends BasicActivity {
                 intent.setClass(MemberActivity.this,ModifyMemberActivity.class);
                 startActivity(intent);
             }});
-        Toast.makeText(getApplicationContext(), "onCreate(1)", Toast.LENGTH_SHORT).show();
+
 
 
         btnclass.setOnClickListener(new Button.OnClickListener(){
@@ -58,7 +58,7 @@ public class MemberActivity extends BasicActivity {
                 intent.setClass(MemberActivity.this,OrderListActivity.class);
                 startActivity(intent);
             }});
-        Toast.makeText(getApplicationContext(), "onCreate(1)", Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -71,7 +71,7 @@ public class MemberActivity extends BasicActivity {
                 startActivity(intent);
             }});
 
-        Toast.makeText(getApplicationContext(), "onCreate(1)", Toast.LENGTH_SHORT).show();
+
 
 
         btnlogout.setOnClickListener(new Button.OnClickListener(){
@@ -83,7 +83,7 @@ public class MemberActivity extends BasicActivity {
                 startActivity(intent);
             }});
 
-        Toast.makeText(getApplicationContext(), "onCreate(1)", Toast.LENGTH_SHORT).show();
+
 
 
     } //on create end
