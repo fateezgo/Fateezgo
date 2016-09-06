@@ -1,5 +1,6 @@
 package tw.com.fateezgo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,9 +41,12 @@ public class LoginActivity extends BasicActivity
             }
             member.setMemberData(this, Integer.valueOf(strArray[0]), userid.getText().toString(), userid.getText().toString(),
                     strArray[1], strArray[2], isMaster);
+            Intent intent = new Intent(this, MemberActivity.class);
+            startActivity(intent);
+            finish();
         }
         else {
-            tvMsg.setText("登入失敗! 請在試一次!");
+            tvMsg.setText("登入失敗! 請再試一次!");
         }
     }
 

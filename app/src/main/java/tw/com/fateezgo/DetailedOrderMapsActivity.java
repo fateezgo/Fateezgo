@@ -49,7 +49,7 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
     private TextView tvSN;
     private EditText edSN;
     private Button bOnline;
-    private boolean isOnline = false;
+    private boolean isOnline = true;
     private boolean isMaster = false;
 
     private int state = STATE_GET_DATA;
@@ -62,7 +62,7 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
         findViews();
 
         Intent intent = getIntent();
-        orderId = intent.getIntExtra("order_id", 3);
+        orderId = intent.getIntExtra("order_id", 11);
 
         //Date date = new Date(intent.getLongExtra("r-date", 0));
         //DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(this);
@@ -88,7 +88,9 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
                     tvDate.setText(strArray[1]);
                     tvPlace.setText(strArray[2]);
                     if (isOnline) {
+                        tvPlace.setText("Online");
                         bOnline.setVisibility(View.VISIBLE);
+                        findViewById(R.id.map).setVisibility(View.INVISIBLE);
                     }
                     serialNo = strArray[4];
                     tvSN.setText(serialNo);
