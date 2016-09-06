@@ -44,7 +44,7 @@ public class MasterEvaluationActivity extends AppCompatActivity {
 
 
         DbTask lt = new DbTask();
-        lt.execute("http://192.168.1.102:8080/fateezgo-ee/masev");
+        lt.execute("http://140.137.218.70:8080/fateezgo-ee/masev");
 
 
 
@@ -94,7 +94,7 @@ public class MasterEvaluationActivity extends AppCompatActivity {
             TextView txtName = (TextView) view.findViewById(R.id.tv_name);
             TextView txtText = (TextView) view.findViewById(R.id.tv_text);
 
-            String[] fields = strList.get(i).split(",");
+            String[] fields = strList.get(i).split("%#");
             txtName.setText(fields[0]);
             txtText.setText(fields[1]);
 
@@ -131,7 +131,7 @@ public class MasterEvaluationActivity extends AppCompatActivity {
             super.onPostExecute(strings);
             System.out.println("count:" + strings.size());
             for (int i = 0; i < strings.size(); i++) {
-                String[] fields_clone = strList.get(i).split(",");
+                String[] fields_clone = strList.get(i).split("%#");
                 stardata.add(Integer.parseInt(fields_clone[2]));
                 System.out.println(strings.get(i));
                 System.out.println(stardata);

@@ -27,7 +27,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,19 +36,22 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="帳號:"
                 android:id="@+id/textView5"
-                android:textSize="25dp" />
+                android:textSize="25sp" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/userid"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:layout_marginLeft="10dp" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,14 +59,16 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="密碼:"
                 android:id="@+id/textView6"
-                android:textSize="25dp" />
+                android:textSize="25sp" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:ems="10"
-                android:id="@+id/passwd" />
+                android:id="@+id/passwd"
+                android:textSize="25sp"
+                android:layout_marginLeft="10dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -76,8 +82,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="登入"
-            android:id="@+id/login"
-            android:textSize="25dp" />
+            android:textSize="25sp"
+            android:onClick="login" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -89,8 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="需要協助嗎?"
-                android:id="@+id/hyperlink"
+                android:id="@+id/err_msg"
                 android:layout_gravity="center"
                 android:textColor="#f37e7e"
                 android:textSize="25dp" />

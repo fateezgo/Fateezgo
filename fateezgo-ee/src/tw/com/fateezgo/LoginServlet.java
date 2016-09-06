@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class SetOrderServlet
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/SetOrder")
-public class SetOrderServlet extends HttpServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SetOrderServlet() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,18 +27,24 @@ public class SetOrderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DbHelper db = new DbHelper();
-		String type = request.getParameter("type");
-		String s = "";
-		if (type.equals("estate")) {
-			String estate = request.getParameter("value");
-			String id = request.getParameter("id");
-			s = "UPDATE OrderData SET estate='" + estate + "' where id=" + id + ";";
-			System.out.println(s);
+		String uid = request.getParameter("uid");
+		String passwd = request.getParameter("passwd");
+		String s = "Select uid, phone, email from MemberData where name='" + uid + "' and passwd='" + passwd +"'";
+		String res = db.query(s);
+		if (!res.equals("")) {
+			response.getWriter().append(res);
+			String[] strArray = res.split(",");
+			s = "Select uid from MasterData where uid='" + strArray[0] +"'";
+			System.out.println("isMaster query:" + s);
+			res = db.query(s);
+			System.out.println("isMaster:" + res);
+			if (res.equals("")) {
+				response.getWriter().append("0");
+			}
+			else {
+				response.getWriter().append("1");
+			}
 		}
-		else {
-			s = "UPDATE OrderData SET star=4 where id=1;";
-		}
-		db.update(s);
 		db.finish();
 	}
 

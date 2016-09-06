@@ -24,14 +24,13 @@ public class MemberActivity extends BasicActivity {
     private Spinner Sp01;
     private TextView T02;
     private static final int REUESET_LOGIN = 100;
-    boolean login = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member);
 
-        if (!login){
+        if (member.isLogin() == false){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivityForResult(intent, REUESET_LOGIN);
         }

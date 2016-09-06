@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,8 +33,9 @@ import java.util.ArrayList;
 
 public class FateSelectionActivity extends BasicActivity{
     static ArrayList<CheckBox>checkBoxArrayList=new ArrayList<CheckBox>();
-
     private Button buy01;
+    private boolean[] checkedInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -41,120 +43,85 @@ public class FateSelectionActivity extends BasicActivity{
         setContentView(R.layout.activity_fate_selection);
 
         checkBoxArrayList.clear();
-       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        int id = 100;
+        int id = getIntent().getIntExtra("uid", 14);
 
         DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.94:8080/fateezgo/Purchase?id="+id);
-        //MyTask mytask=new MyTask();
-        //mytask.execute("http://140.137.218.94:8080/fateezgo/Purchase?id="+id);
+        lt.execute("http://140.137.218.52:8080/fateezgo-ee/GetMasterProf?uid="+id);
 
-        ListView listView = (ListView) this.findViewById(R.id.listview_class);
-        MyAdapter adapter = new MyAdapter(this,strList);
-        listView.setAdapter(adapter);
 
         buy01= (Button) findViewById(R.id.buy01);
         buy01.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Log.d("here here","msg");
-
-                Intent intent=new Intent(getApplicationContext(),PurchaseActivity.class);
                 int count=0;
                 for (int i = 0; i < strList.size(); i++) {
-                    CheckBox checkBox=checkBoxArrayList.get(i);
-                    if (checkBox.isChecked()){
+                    if (checkedInfo[i] == true){
                         count++;
                     }
                 }
+                System.out.println("count: " + count);
                 String[] strArray = new String[count];
                 int cur = 0;
                 for (int i = 0; i < strList.size(); i++) {
-                    CheckBox checkBox=checkBoxArrayList.get(i);
-                    if (checkBox.isChecked()){
-                        strArray[cur++]=checkBox.getText().toString();
+                    if (checkedInfo[i] == true){
+                        strArray[cur++]=strList.get(i).toString();
                     }
                 }
 
-                for (int i = 0; i < strArray.length; i++) {
-                    System.out.println(strArray[i]);
-                }
-
+                Intent intent=new Intent(getApplicationContext(),PurchaseActivity.class);
                 intent.putExtra("checkbox_info", strArray);
                 startActivity(intent);
             }
         });
-
     }
 
-    class MyTask extends AsyncTask<String,Void,ArrayList<String>>{
-
-
-        @Override
-        protected ArrayList<String> doInBackground(String... strings) {
-
-            try {
-                URL url=new URL(strings[0]);
-                InputStream is=url.openStream();
-                BufferedReader in=new BufferedReader(new InputStreamReader(is));
-                String strline;
-                while ((strline=in.readLine())!=null){
-                    strList.add(strline);
-                    System.out.println(strline);
-                }
-                in.close();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return strList;
-
-        }
-    }
-
-
-    private static class MyAdapter extends ArrayAdapter
+    class ProfAdapter extends ArrayAdapter
     {
         private static final int mResourceId = R.layout.activity_fate_selection_listview_info;
         private LayoutInflater mInflater;
-        ArrayList<String>strlist;
-        // String [] classInfo = {"命名", "擇日", "八字", "占星", "塔羅", "風水", "紫微"};
 
-        public MyAdapter(Context context,ArrayList<String>strlist)
+        public ProfAdapter(Context context)
         {
             super(context, mResourceId);
             mInflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
-            this.strlist = strlist;
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view;
-            if (convertView == null) {
-                view = mInflater.inflate(mResourceId, parent, false);
-            } else {
-                view = convertView;
-            }
+            View view = mInflater.inflate(mResourceId, parent, false);
 
+            String[] strArray = strList.get(position).split(",");
             TextView textInfo;
             textInfo = (TextView)view.findViewById(R.id.info_Id);
-            textInfo.setText(strlist.get(position));
+            textInfo.setText(strArray[0]);
+            TextView tvCost = (TextView) view.findViewById(R.id.tv_cost);
+            tvCost.setText(strArray[1]);
+            TextView tvLeadTime = (TextView) view.findViewById(R.id.tv_leadtime);
+            tvLeadTime.setText(strArray[2]);
             CheckBox checkBox= (CheckBox) view.findViewById(R.id.info_checkbox);
-            checkBoxArrayList.add(checkBox);
+            checkBox.setTag(position);
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    int position = (int)compoundButton.getTag();
+                    checkedInfo[position] = b;
+                }
+            });
             return view;
         }
 
         @Override
         public int getCount()
         {
-            return strlist.size();
+            return strList.size();
         }
     }
 
     @Override
     void doViews() {
-
+        ListView listView = (ListView) this.findViewById(R.id.listview_class);
+        ProfAdapter adapter = new ProfAdapter(this);
+        listView.setAdapter(adapter);
+        checkedInfo = new boolean[strList.size()];
     }
 }

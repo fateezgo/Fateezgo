@@ -75,10 +75,11 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="線上諮詢"
+            android:text="線上諮詢室"
             android:id="@+id/b_online"
             android:onClick="consultOnline"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:layout_marginLeft="10dp" />
     </LinearLayout>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"

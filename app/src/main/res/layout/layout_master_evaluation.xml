@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    android:background="@drawable/backgbase"
+    android:baselineAligned="false">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -16,8 +18,8 @@
             android:text="New Text"
             android:id="@+id/tv_name"
             android:textSize="13sp"
-            android:textColor="#4895f9"
-            android:layout_marginRight="5dp" />
+            android:textColor="#0455be"
+            android:layout_marginRight="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -25,7 +27,7 @@
             android:text="New Text"
             android:id="@+id/tv_text"
             android:textSize="13sp"
-            android:textColor="#868689" />
+            android:textColor="#3b3b3c" />
 
     </LinearLayout>
 
