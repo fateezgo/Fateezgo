@@ -31,17 +31,19 @@ public class LoginServlet extends HttpServlet {
 		String passwd = request.getParameter("passwd");
 		String s = "Select uid, phone, email from MemberData where name='" + uid + "' and passwd='" + passwd +"'";
 		String res = db.query(s);
-		response.getWriter().append(res);
-		String[] strArray = res.split(",");
-		s = "Select uid from MasterData where uid='" + strArray[0] +"'";
-		System.out.println("isMaster query:" + s);
-		res = db.query(s);
-		System.out.println("isMaster:" + res);
-		if (res.equals("")) {
-			response.getWriter().append("0");
-		}
-		else {
-			response.getWriter().append("1");
+		if (!res.equals("")) {
+			response.getWriter().append(res);
+			String[] strArray = res.split(",");
+			s = "Select uid from MasterData where uid='" + strArray[0] +"'";
+			System.out.println("isMaster query:" + s);
+			res = db.query(s);
+			System.out.println("isMaster:" + res);
+			if (res.equals("")) {
+				response.getWriter().append("0");
+			}
+			else {
+				response.getWriter().append("1");
+			}
 		}
 		db.finish();
 	}

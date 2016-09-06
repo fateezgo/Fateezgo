@@ -39,10 +39,14 @@ public class LoginActivity extends BasicActivity
             else {
                 isMaster = false;
             }
-            member.setMemberData(this, Integer.valueOf(strArray[0]), userid.getText().toString(), userid.getText().toString(),
-                    strArray[1], strArray[2], isMaster);
-            Intent intent = new Intent(this, MemberActivity.class);
-            startActivity(intent);
+            member.setMemberData(
+                    this,
+                    Integer.valueOf(strArray[0]),
+                    userid.getText().toString(),
+                    userid.getText().toString(),
+                    strArray[1],
+                    strArray[2],
+                    isMaster);
             finish();
         }
         else {
