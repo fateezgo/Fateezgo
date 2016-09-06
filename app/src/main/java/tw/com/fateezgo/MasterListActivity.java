@@ -50,7 +50,7 @@ public class MasterListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int type = intent.getIntExtra(qtype,FREE);
         String profType = intent.getStringExtra("PROF");
-        System.out.println("專長="+profType);
+//        System.out.println("專長="+profType);
         switch (type){
             case 100:
                 requestType="free";
@@ -68,7 +68,6 @@ public class MasterListActivity extends AppCompatActivity {
 
     }
 
-
     void doViews() {
         MyAdapter adapter = new MyAdapter(this);
         ListView lv = (ListView) findViewById(R.id.listViewMastList);
@@ -77,7 +76,10 @@ public class MasterListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(),MasterDetailsActivity.class);
-                intent.putExtra("Mast_NAME","Eva");
+                String s = lvfm.getItemAtPosition(i).toString();
+                String[] sa = s.split(",");
+                System.out.println("name:"+sa[0]);
+                intent.putExtra("Mast_NAME",sa[0]);
                 startActivity(intent);
             }
         });

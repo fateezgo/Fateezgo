@@ -32,7 +32,9 @@
         <activity android:name=".ModifyMasterActivity" />
         <activity android:name=".ModifyMasterBasicActivity" />
         <activity android:name=".ModifyMemberActivity" />
-        <activity android:name=".MasterEvaluationActivity" />
+        <activity
+            android:name=".MasterEvaluationActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MasterNewActivity" />
         <activity android:name=".FreeMasterActivity" />
         <activity
