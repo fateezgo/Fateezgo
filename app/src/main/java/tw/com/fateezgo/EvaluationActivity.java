@@ -26,14 +26,14 @@ public class EvaluationActivity extends BasicActivity {
     private RatingBar ratingBar;
     private TextView txtRatingValue;
     private Button btnSubmit;
-    String[] Balls = {"塔羅","八字", "占星", "其他"};
+    String[] Balls = {"塔羅","紫微", "占星", "其他"};
     private Spinner Sp01;
 
 //    private TextView Tspinner;
-    String str_taro = "塔羅好棒!";
-    String str_eight = "八字太神奇了" ;
-    String str_astrology = "占星真美好!";
-    String str_others = "世界真美妙!";
+    String str_taro = "塔羅好棒! 感恩老師給予各方面之建議， 將記入心中做為後續調整之方針， 受益良多， 謝謝。";
+    String str_eight = "紫微太神奇了! 謝謝老師的開導，收穫良多。感謝老師給我方向，希望一切更好，感恩!" ;
+    String str_astrology = "占星真美好! 聽到老師的建議後收穫良多， 回去後會好好思考下一步該如何做， 謝謝老師。";
+    String str_others = "課程很豐富! 謝謝老師詳細的解釋，讓我能安心，面對自己的未來，相信運勢會越來越好!";
     private EditText ET01;
     private CheckBox CB1;
     private CompoundButton.OnCheckedChangeListener mylistener;
