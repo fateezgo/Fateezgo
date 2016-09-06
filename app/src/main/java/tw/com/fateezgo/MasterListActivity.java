@@ -62,8 +62,6 @@ public class MasterListActivity extends AppCompatActivity {
 
             case 300:
                 requestType="prof";
-
-
                 lt.execute("http://140.137.218.77:8080/fateezgo-ee/getmaster?qtype="+requestType+"&profType="+profType);
             break;
         }
@@ -78,7 +76,9 @@ public class MasterListActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                // do when item i is clicked
+                Intent intent = new Intent(getApplicationContext(),MasterDetailsActivity.class);
+                intent.putExtra("Mast_NAME","Eva");
+                startActivity(intent);
             }
         });
     }

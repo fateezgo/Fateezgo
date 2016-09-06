@@ -3,64 +3,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="tw.com.fateezgo.MasterDetailsActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@drawable/backgbase">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:background="@drawable/backgroundmastdetxxhdpi">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_weight="1"
-            android:id="@+id/picMaster" />
-        <TextView
+            android:id="@+id/picMaster"
+            android:src="@drawable/femalemast1"
+            android:layout_gravity="center_vertical" />
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/textViewMasterShort" />
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textViewMastname"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="24dp"
+                android:textColor="#0000ff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textViewMastprof"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#0000ff"
+                android:textSize="24dp" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:text="老師詳細資料"
         android:id="@+id/textViewMastDet"
-        android:layout_weight="0.64" />
+        android:layout_weight="0.64"
+        android:textColor="#0000ff"
+        android:textSize="16dp"
+        android:paddingTop="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="課程預約"
-            android:id="@+id/fatesel"
-            android:layout_weight="1" />
+            android:id="@+id/fatesel" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="看評價"
-            android:id="@+id/masteva"
-            android:layout_weight="1" />
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="看評價"-->
+            <!--android:id="@+id/masteva"-->
+            <!--android:layout_weight="1" />-->
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="近期活動"
-            android:id="@+id/mastnew"
-            android:layout_weight="1" />
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="近期活動"-->
+            <!--android:id="@+id/mastnew"-->
+            <!--android:layout_weight="1" />-->
     </LinearLayout>
 
 

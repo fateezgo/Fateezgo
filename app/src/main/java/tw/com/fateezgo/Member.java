@@ -47,10 +47,10 @@ public class Member {
         return isMaster;
     }
 
-    public void setMemberData(Context context, boolean isLogin, int uid, String name, String password, String phone, String email, boolean isMaster) {
+    public void setMemberData(Context context, int uid, String name, String password, String phone, String email, boolean isMaster) {
         SharedPreferences sp = context.getSharedPreferences("mem", Context.MODE_PRIVATE);
 
-        this.isLogin = isLogin;
+        isLogin = true;
         this.uid = uid;
         this.name = name;
         this.password = password;
