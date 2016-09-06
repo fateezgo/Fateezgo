@@ -73,7 +73,6 @@ public class FateSelectionActivity extends BasicActivity{
                 startActivity(intent);
             }
         });
-
     }
 
     class ProfAdapter extends ArrayAdapter
