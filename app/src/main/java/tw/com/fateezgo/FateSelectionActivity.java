@@ -32,9 +32,9 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class FateSelectionActivity extends BasicActivity{
-    static ArrayList<CheckBox>checkBoxArrayList=new ArrayList<CheckBox>();
     private Button buy01;
     private boolean[] checkedInfo;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,11 +42,10 @@ public class FateSelectionActivity extends BasicActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fate_selection);
 
-        checkBoxArrayList.clear();
-        int id = getIntent().getIntExtra("uid", 14);
+        id = getIntent().getIntExtra("uid", 15);
 
         DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.52:8080/fateezgo-ee/GetMasterProf?uid="+id);
+        lt.execute("http://140.137.218.52:8080/fateezgo-ee/GetMasterProf?uid="+ id);
 
 
         buy01= (Button) findViewById(R.id.buy01);
@@ -69,6 +68,7 @@ public class FateSelectionActivity extends BasicActivity{
                 }
 
                 Intent intent=new Intent(getApplicationContext(),PurchaseActivity.class);
+                intent.putExtra("master_uid", id);
                 intent.putExtra("checkbox_info", strArray);
                 startActivity(intent);
             }
@@ -93,11 +93,11 @@ public class FateSelectionActivity extends BasicActivity{
             String[] strArray = strList.get(position).split(",");
             TextView textInfo;
             textInfo = (TextView)view.findViewById(R.id.info_Id);
-            textInfo.setText(strArray[0]);
+            textInfo.setText(strArray[1]);
             TextView tvCost = (TextView) view.findViewById(R.id.tv_cost);
-            tvCost.setText(strArray[1]);
+            tvCost.setText(strArray[2]);
             TextView tvLeadTime = (TextView) view.findViewById(R.id.tv_leadtime);
-            tvLeadTime.setText(strArray[2]);
+            tvLeadTime.setText(strArray[3]);
             CheckBox checkBox= (CheckBox) view.findViewById(R.id.info_checkbox);
             checkBox.setTag(position);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

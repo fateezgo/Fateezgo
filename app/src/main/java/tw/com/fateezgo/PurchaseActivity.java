@@ -19,6 +19,8 @@ import java.util.ArrayList;
 
 public class PurchaseActivity extends BasicActivity {
     String[] strArray;
+    private int masterUid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +29,11 @@ public class PurchaseActivity extends BasicActivity {
         ListView listView = (ListView) this.findViewById(R.id.listview_class);
         Intent intent=getIntent();
         strArray=intent.getStringArrayExtra("checkbox_info");
-
         for (int i = 0; i < strArray.length; i++) {
             Log.d("Purchase", strArray[i]);
         }
+        masterUid = intent.getIntExtra("master_uid", 15);
+        Log.d("Purchase", "master uid:" + masterUid);
 
         PurchaseAdapter adapter = new PurchaseAdapter(this);
         ListView lv = (ListView) findViewById(R.id.list_purchase);
@@ -42,6 +45,20 @@ public class PurchaseActivity extends BasicActivity {
 
     }
 
+    void purchase(View v) {
+        String prof = "";
+        for (int i = 0; i < strArray.length; i++) {
+            String[] strings = strArray[i].split(",");
+            prof += strings[0];
+            prof += ",";
+        }
+        Log.d("Purchase", "prof = " + prof);
+        DbTask dbTask = new DbTask();
+        dbTask.execute("http://140.137.218.52:8080/fateezgo-ee/SetOrder?type=insert" +
+                "&memuid=" + member.uid() +
+                "&masteruid=" + masterUid +
+                "&professionalid=" + prof);
+    }
 
     class PurchaseAdapter extends BaseAdapter
     {
