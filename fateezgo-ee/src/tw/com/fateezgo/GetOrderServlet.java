@@ -71,7 +71,7 @@ public class GetOrderServlet extends HttpServlet {
 				String res = db.query(s);
 				sOut = queryForName(db, res);
 			}
-			else {
+			else if (type.equals("list")){
 				String s = "SELECT memberuid, masteruid, professionalid, pdate, rdate, rplace, estate, sn FROM OrderTab WHERE memberuid=" + id + " or masteruid=" + id + ";";
 				String res = db.query(s);
 				String[] strArray = res.split("\n");
@@ -83,6 +83,10 @@ public class GetOrderServlet extends HttpServlet {
 					sOut += strArray[i];
 					sOut += "\n";
 				}
+			}
+			else if (type.equals("rdate")){
+				String s = "SELECT rdate FROM OrderTab WHERE masteruid=" + id;
+				sOut = db.query(s);
 			}
 		}
 		response.setContentType("text/html;charset=UTF-8");		
