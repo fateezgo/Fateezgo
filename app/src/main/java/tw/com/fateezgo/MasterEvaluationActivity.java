@@ -104,7 +104,7 @@ public class MasterEvaluationActivity extends AppCompatActivity {
     }
 
 
-    class DbTask extends AsyncTask<String, Void, ArrayList<String>> {
+   private class DbTask extends AsyncTask<String, Void, ArrayList<String>> {
 
         @Override
         protected ArrayList<String> doInBackground(String... params) {
@@ -141,7 +141,7 @@ public class MasterEvaluationActivity extends AppCompatActivity {
             doViews();
             addListenerOnRatingBar();
         }
-    }
+    } //DBTask end
 
 
     public void addListenerOnRatingBar() {
