@@ -31,11 +31,11 @@ public class GetmasterServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8"); 
 		request.setCharacterEncoding("UTF-8");
+		
 		String requestType =request.getParameter("qtype");
 		String profType = request.getParameter("profType");
 	
 		DbHelper db = new DbHelper();
-
 		if (requestType.equals("free")) {
 			
 			String s="SELECT MemberData.name,MasProfData.professional "

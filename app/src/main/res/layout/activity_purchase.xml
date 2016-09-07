@@ -20,7 +20,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView2"
+        android:id="@+id/list_purchase"
         android:layout_gravity="center_vertical"
         android:layout_weight="1" />
 
@@ -28,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="確定"
-        android:id="@+id/buy02" />
+        android:id="@+id/buy02"
+        android:onClick="purchase" />
 
 </LinearLayout>

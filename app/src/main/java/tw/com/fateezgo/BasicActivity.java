@@ -38,6 +38,7 @@ abstract class BasicActivity extends AppCompatActivity {
 
         member = Member.getInstance();
         member.getMemberData(this);
+        Log.d("BasicActivity", "isLogin: " + member.isLogin());
     }
 
     abstract void doViews();/* {
@@ -114,9 +115,9 @@ abstract class BasicActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<String> strings) {
             super.onPostExecute(strings);
-            System.out.println("count:" + strings.size());
+            Log.d("BasicActivity", "count:" + strings.size());
             for (int i = 0; i < strings.size(); i++) {
-                System.out.println(strings.get(i));
+                Log.d("BasicActivity", strings.get(i));
             }
 
             doViews();
@@ -135,17 +136,27 @@ abstract class BasicActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_find_master:
                 Log.d("BasicActivity", "find master");
+                intent = new Intent(this, FindMasterActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.action_free_area:
                 Log.d("BasicActivity", "free area");
+                intent = new Intent(this, FreeMasterActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.action_fate_every_day:
+                Log.d("BasicActivity", "fate everyday");
                 intent = new Intent(this, FateEveryDayActivity.class);
                 startActivity(intent);
                 finish();
                 break;
             case R.id.action_member:
                 Log.d("BasicActivity", "member");
+                intent = new Intent(this, MemberActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
         return false;

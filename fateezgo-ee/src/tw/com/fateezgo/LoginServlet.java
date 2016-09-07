@@ -30,13 +30,20 @@ public class LoginServlet extends HttpServlet {
 		String uid = request.getParameter("uid");
 		String passwd = request.getParameter("passwd");
 		String s = "Select uid, phone, email from MemberData where name='" + uid + "' and passwd='" + passwd +"'";
-		response.getWriter().append(db.query(s));
-		s = "Select uid from MasterData where uid='" + uid +"'";
-		if (s.equals("")) {
-			response.getWriter().append("0");
-		}
-		else {
-			response.getWriter().append("1");
+		String res = db.query(s);
+		if (!res.equals("")) {
+			response.getWriter().append(res);
+			String[] strArray = res.split(",");
+			s = "Select uid from MasterData where uid='" + strArray[0] +"'";
+			System.out.println("isMaster query:" + s);
+			res = db.query(s);
+			System.out.println("isMaster:" + res);
+			if (res.equals("")) {
+				response.getWriter().append("0");
+			}
+			else {
+				response.getWriter().append("1");
+			}
 		}
 		db.finish();
 	}

@@ -1,5 +1,6 @@
 package tw.com.fateezgo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,11 +39,18 @@ public class LoginActivity extends BasicActivity
             else {
                 isMaster = false;
             }
-            member.setMemberData(this, Integer.valueOf(strArray[0]), userid.getText().toString(), userid.getText().toString(),
-                    strArray[1], strArray[2], isMaster);
+            member.setMemberData(
+                    this,
+                    Integer.valueOf(strArray[0]),
+                    userid.getText().toString(),
+                    userid.getText().toString(),
+                    strArray[1],
+                    strArray[2],
+                    isMaster);
+            finish();
         }
         else {
-            tvMsg.setText("登入失敗! 請在試一次!");
+            tvMsg.setText("登入失敗! 請再試一次!");
         }
     }
 
@@ -52,6 +60,6 @@ public class LoginActivity extends BasicActivity
         String uid = userid.getText().toString();
         String pass = passwd.getText().toString();
         Log.d("LOGIN", "login!!");
-        db.execute("http://140.137.218.52:8080/fateezgo-ee/login?uid=" + uid + "&passwd=" + pass);
+        db.execute("http://140.137.218.77:8080/fateezgo-ee/login?uid=" + uid + "&passwd=" + pass);
     }
 }
