@@ -60,6 +60,6 @@ public class LoginActivity extends BasicActivity
         String uid = userid.getText().toString();
         String pass = passwd.getText().toString();
         Log.d("LOGIN", "login!!");
-        db.execute("http://140.137.218.52:8080/fateezgo-ee/login?uid=" + uid + "&passwd=" + pass);
+        db.execute("http://140.137.218.77:8080/fateezgo-ee/login?uid=" + uid + "&passwd=" + pass);
     }
 }

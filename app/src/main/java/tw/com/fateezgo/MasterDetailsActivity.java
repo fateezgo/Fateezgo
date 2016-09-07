@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,9 @@ public class MasterDetailsActivity extends BasicActivity{
 
 
     DbTask db = new DbTask();
+    private Button masteva;
+    private Button fatesel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +34,28 @@ public class MasterDetailsActivity extends BasicActivity{
         tvMastname = (TextView) findViewById(R.id.textViewMastname);
         tvMastprof = (TextView) findViewById(R.id.textViewMastprof);
         tvMastdet = (TextView) findViewById(R.id.textViewMastDet);
+        masteva = (Button) findViewById(R.id.masteva);
+        fatesel = (Button) findViewById(R.id.fatesel);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         String mastname = intent.getStringExtra("Mast_NAME");
-        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+mastname);
+//        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+mastname);
+        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+(intent.getStringExtra("Mast_NAME")));
 
-
+        fatesel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(),FateSelectionActivity.class);
+                startActivity(intent1);
+            }
+        });
+        masteva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(getApplicationContext(),MasterEvaluationActivity.class);
+                startActivity(intent2);
+            }
+        });
     }
 
 
