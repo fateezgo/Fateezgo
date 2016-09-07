@@ -42,6 +42,24 @@ public class DbHelper {
 		
 		return str;
 	}
+	
+	public String queryOneRow(String qStr) {
+		String str = "";
+		Statement s;
+		try {
+			s = conn.createStatement();
+			ResultSet rs = s.executeQuery(qStr);
+			if (rs.next()) {
+				str = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return str;
+	}
+	
 	public int update(String updateStr) {
 		Statement s;
 		int rowCount = 0;

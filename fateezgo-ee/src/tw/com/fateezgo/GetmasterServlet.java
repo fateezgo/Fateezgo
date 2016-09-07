@@ -47,11 +47,12 @@ public class GetmasterServlet extends HttpServlet {
 			String s="";
 				switch (profType) {
 				case "astromast":
-					 s ="SELECT md.name, mp.professional FROM MemberData md JOIN MasProfData mp ON md.uid=mp.uid JOIN MasterData ma ON md.uid=ma.uid WHERE mp.professional=\"占星\"ORDER BY ma.evasum DESC";
+					 s ="SELECT md.uid, md.name, mp.professional FROM MemberData md JOIN MasProfData mp ON md.uid=mp.uid JOIN MasterData ma ON md.uid=ma.uid WHERE mp.professional=\"占星\"ORDER BY ma.evasum DESC";
+					 
 					break;
 
 				case "tarot":
-					 s ="SELECT md.name, mp.professional FROM MemberData md JOIN MasProfData mp ON md.uid=mp.uid JOIN MasterData ma ON md.uid=ma.uid WHERE mp.professional=\"塔羅\"ORDER BY ma.evasum DESC";
+					 s ="SELECT md.uid, md.name, mp.professional FROM MemberData md JOIN MasProfData mp ON md.uid=mp.uid JOIN MasterData ma ON md.uid=ma.uid WHERE mp.professional=\"塔羅\"ORDER BY ma.evasum DESC";
 					break;
 				}
 			

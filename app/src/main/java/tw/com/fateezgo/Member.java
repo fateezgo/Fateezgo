@@ -69,7 +69,7 @@ public class Member {
     }
 
     public void getMemberData(Context context) {
-        SharedPreferences sp = context.getSharedPreferences("mem", Context.MODE_PRIVATE);
+        SharedPreferences sp =  context.getSharedPreferences("mem", Context.MODE_PRIVATE);
 
         isLogin = sp.getBoolean("isLogin", false);
         uid = sp.getInt("uid", 0);
@@ -78,5 +78,26 @@ public class Member {
         phone = sp.getString("phone", "");
         email = sp.getString("email", "");
         isMaster = sp.getBoolean("isMaster", false);
+    }
+
+    public void logout(Context context) {
+        SharedPreferences sp =  context.getSharedPreferences("mem", Context.MODE_PRIVATE);
+
+        isLogin = false;
+        uid = 0;
+        name ="not set";
+        password = "not set";
+        phone = "not set";
+        email = "not set";
+        isMaster = false;
+
+        sp.edit().putBoolean("isLogin", isLogin)
+                .putInt("uid", uid)
+                .putString("name", name)
+                .putString("passwd", password)
+                .putString("phone", phone)
+                .putString("email", email)
+                .putBoolean("isMaster", isMaster)
+                .commit();
     }
 }

@@ -101,14 +101,14 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="確定送出"
-            android:id="@+id/button"
+            android:id="@+id/bOK"
             android:layout_gravity="top" />
 
         <Button
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="重新填寫"
-            android:id="@+id/button2" />
+            android:id="@+id/bClear" />
     </LinearLayout>
 
 </LinearLayout>

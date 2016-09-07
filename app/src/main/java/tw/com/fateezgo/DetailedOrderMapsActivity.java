@@ -49,10 +49,9 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
     private TextView tvSN;
     private EditText edSN;
     private Button bOnline;
-    private boolean isOnline = true;
-    private boolean isMaster = false;
 
     private int state = STATE_GET_DATA;
+    private TextView tvMemTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,14 +61,14 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
         findViews();
 
         Intent intent = getIntent();
-        orderId = intent.getIntExtra("order_id", 11);
+        orderId = intent.getIntExtra("ORDERID_EXTRA", 2);
 
         //Date date = new Date(intent.getLongExtra("r-date", 0));
         //DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(this);
         //tv.setText(dateFormat.format(date).toString());
 
         DbTask dbTask = new DbTask();
-        dbTask.execute("http://140.137.218.52:8080/fateezgo-ee/order?id="+ orderId);
+        dbTask.execute("http://140.137.218.52:8080/fateezgo-ee/order?type=one&id="+ orderId);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -79,23 +78,35 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
 
 
     void doViews() {
+        boolean isMaster = false;
         switch (state) {
             case STATE_GET_DATA:
                 String string = strList.get(0);
                 if (string != null) {
+                    //memberuid, mem-name, masteruid, master-name, professional, pdate, rdate, rplace, estate, sn
                     String[] strArray = string.split(",");
-                    tvMaster.setText(strArray[0]);
-                    tvDate.setText(strArray[1]);
-                    tvPlace.setText(strArray[2]);
-                    if (isOnline) {
+                    if (Integer.valueOf(strArray[0]) == member.uid()) {
+                        tvMemTitle.setText("老師：");
+                        tvMaster.setText(strArray[3]);
+                        isMaster = false;
+                    }
+                    else {
+                        tvMemTitle.setText("購買者：");
+                        tvMaster.setText(strArray[1]);
+                        isMaster = true;
+                    }
+                    tvDate.setText(strArray[6]);
+                    tvPlace.setText(strArray[7]);
+                    Log.d("DETAILED_ORDER", "place: " + strArray[7]);
+                    if (strArray[7].equals("online")) {
                         tvPlace.setText("Online");
                         bOnline.setVisibility(View.VISIBLE);
                         findViewById(R.id.map).setVisibility(View.INVISIBLE);
                     }
-                    serialNo = strArray[4];
+                    serialNo = strArray[9];
                     tvSN.setText(serialNo);
                     edSN.setVisibility(View.INVISIBLE);
-                    String eState = strArray[3];
+                    String eState = strArray[8];
                     Log.d("DETAILED_ORDER", "estate: " + eState);
                     if (eState.equals("N")) {
                         if (isMaster == true) {
@@ -177,6 +188,7 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
     }
 
     private void findViews() {
+        tvMemTitle = (TextView) findViewById(R.id.tv_mem_title);
         tvMaster = (TextView) findViewById(R.id.tv_master_name);
         tvDate = (TextView) findViewById(R.id.tv_r_date);
         tvPlace = (TextView) findViewById(R.id.tv_r_place);
