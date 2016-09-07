@@ -33,7 +33,8 @@ public class MasterEvaluationActivity extends AppCompatActivity {
     private RatingBar ratingBar;
     private TextView txtRatingValue;
     private ArrayList<Integer> stardata = new ArrayList<Integer>();
-
+    private int masuid;
+    int nullcount =0 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +42,17 @@ public class MasterEvaluationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_master_evaluation);
 
 //        stardata = new ArrayList<String>();
+        Intent intent = getIntent();
+        masuid = getIntent().getIntExtra("uid", 15);
+        System.out.println(masuid);
 
+//        String webstar = "http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&starvalue="+starvalue+"&id="+id ;
 
+        String weburl = "http://140.137.218.70:8080/fateezgo-ee/masev?masuid="+masuid ;
+        System.out.println(weburl) ;
         DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.70:8080/fateezgo-ee/masev");
-
+        lt.execute(weburl);
+//        lt.execute("http://140.137.218.70:8080/fateezgo-ee/masev?masuid="+masuid);
 
 
     }
@@ -95,11 +102,15 @@ public class MasterEvaluationActivity extends AppCompatActivity {
             TextView txtText = (TextView) view.findViewById(R.id.tv_text);
 
             String[] fields = strList.get(i).split("%#");
-            txtName.setText(fields[0]);
-            txtText.setText(fields[1]);
+            if (fields[2].equals("null")) {
+                return null;
+            }else {
+                txtName.setText(fields[0]);
+                txtText.setText(fields[1]);
+                return view;
+            }
 
 
-            return view;
         }
     }
 
@@ -132,7 +143,12 @@ public class MasterEvaluationActivity extends AppCompatActivity {
             System.out.println("count:" + strings.size());
             for (int i = 0; i < strings.size(); i++) {
                 String[] fields_clone = strList.get(i).split("%#");
-                stardata.add(Integer.parseInt(fields_clone[2]));
+                if (fields_clone[2].equals("null")) {
+                    nullcount++;
+                }
+                else {
+                    stardata.add(Integer.parseInt(fields_clone[2]));
+                }
                 System.out.println(strings.get(i));
                 System.out.println(stardata);
             }
