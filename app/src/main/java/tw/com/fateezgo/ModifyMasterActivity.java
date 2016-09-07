@@ -17,14 +17,14 @@ public class ModifyMasterActivity extends BasicActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_modify_master);
 //        findviews
         findViews();
 
         btn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),FindMasterActivity.class);
+                Intent intent = new Intent(getApplicationContext(),IntroductionActivity.class);
                 startActivity(intent);
             }
         });
@@ -32,8 +32,8 @@ public class ModifyMasterActivity extends BasicActivity {
         btn02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(getApplicationContext(),MasterListActivity.class);
-                intent.putExtra("QTYPE", MasterListActivity.FREE);
+                Intent intent =new Intent(getApplicationContext(),ProfessionalActivity.class);
+                // intent.putExtra("QTYPE", MasterListActivity.FREE);
                 startActivity(intent);
             }
         });
@@ -41,7 +41,7 @@ public class ModifyMasterActivity extends BasicActivity {
         btn03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(getApplicationContext(),FateEveryDayActivity.class);
+                Intent intent =  new Intent(getApplicationContext(),SetMasterScheduleActivity.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +49,7 @@ public class ModifyMasterActivity extends BasicActivity {
         btn04.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MemberActivity.class);
+                Intent intent = new Intent(getApplicationContext(),NewListActivity.class);
                 startActivity(intent);
             }
         });

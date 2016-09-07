@@ -3,15 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/backgbase">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:background="@drawable/logomembertitlexxhdpi">
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="會員專區"
+            android:id="@+id/t01"
+            android:layout_gravity="center_vertical"
+            android:textSize="50dp"
+            android:textAlignment="center"
+            android:background="@drawable/button_shape_master_list"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
 
     </LinearLayout>
 
@@ -21,27 +38,32 @@
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:gravity="top|center_horizontal">
 
         <Button
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:text="會員資料修改"
             android:id="@+id/btnmember"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_gravity="center_horizontal"
             android:textSize="30dp"
+            android:background="@drawable/button_shape_main"
             android:layout_marginRight="25dp"
-            android:background="@drawable/logomemberdataxxhdpi" />
+            android:textColor="#3764ed" />
 
         <Button
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:text="課程"
             android:id="@+id/btnclass"
-            android:background="@drawable/logoconsultxxhdpi"
-            android:layout_marginLeft="25dp" />
+            android:textSize="30dp"
+            android:background="@drawable/button_shape_main"
+            android:layout_marginLeft="25dp"
+            android:textColor="#3764ed" />
     </LinearLayout>
 
     <LinearLayout
@@ -54,18 +76,24 @@
         <Button
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:text="與我聯絡"
             android:id="@+id/btncontact"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/btncontactmexxhdpi"
-            android:layout_marginRight="25dp" />
+            android:textSize="30dp"
+            android:background="@drawable/button_shape_main"
+            android:layout_marginRight="25dp"
+            android:textColor="#3764ed" />
 
         <Button
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:text="登出"
             android:id="@+id/btnlogout"
             android:layout_gravity="center_horizontal"
+            android:textSize="30dp"
             android:layout_marginLeft="25dp"
-            android:background="@drawable/btnlogoutxxhdpi" />
+            android:background="@drawable/button_shape_main"
+            android:textColor="#3764ed" />
     </LinearLayout>
 
 </LinearLayout>

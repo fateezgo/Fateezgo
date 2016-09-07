@@ -34,6 +34,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
+                android:id="@+id/textViewMasteruid"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="24dp"
+                android:textColor="#0000ff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
                 android:id="@+id/textViewMastname"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
@@ -76,7 +87,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="課程預約"
-            android:id="@+id/fatesel" />
+            android:id="@+id/fateresv" />
 
         <Button
             android:layout_width="120dp"

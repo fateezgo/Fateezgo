@@ -72,6 +72,7 @@ public class MasterListActivity extends AppCompatActivity {
         MyAdapter adapter = new MyAdapter(this);
         ListView lv = (ListView) findViewById(R.id.listViewMastList);
         lv.setAdapter(adapter);
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -113,12 +114,15 @@ public class MasterListActivity extends AppCompatActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             view = inflater.inflate(R.layout.layout_master_list, null);
+            TextView txtuid = (TextView) view.findViewById(R.id.txtuid);
             TextView txtName = (TextView) view.findViewById(R.id.txtName);
             TextView txtText = (TextView) view.findViewById(R.id.txtMastProf);
 
             String[] fields = strList.get(i).split(",");
-            txtName.setText(fields[0]+" 老師");
-            txtText.setText("專長："+fields[1]);
+            System.out.println(fields[0]);
+            txtuid.setText(fields[0]+"號老師");
+            txtName.setText(fields[1]);
+            txtText.setText("專長："+fields[2]);
 
             return view;
         }
