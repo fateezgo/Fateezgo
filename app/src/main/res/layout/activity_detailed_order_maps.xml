@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="老師："
-            android:id="@+id/textView4"
+            android:id="@+id/tv_mem_title"
             android:singleLine="true" />
 
         <TextView
