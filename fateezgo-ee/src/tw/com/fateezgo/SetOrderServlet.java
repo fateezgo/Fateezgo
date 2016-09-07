@@ -32,12 +32,13 @@ public class SetOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DbHelper db = new DbHelper();
 		String type = request.getParameter("type");
+		System.out.println(type);
 		String s = "";
 		if (type != null) {
 			if (type.equals("estate")) {
 				String estate = request.getParameter("value");
 				String id = request.getParameter("id");
-				s = "UPDATE OrderData SET estate='" + estate + "' where id=" + id + ";";
+				s = "UPDATE OrderTab SET estate='" + estate + "' where id=" + id + ";";
 				System.out.println(s);
 				db.update(s);
 			}
@@ -61,6 +62,13 @@ public class SetOrderServlet extends HttpServlet {
 					System.out.println(s);
 					db.update(s);
 				}
+			}
+			else if (type.equals("rdate")) {
+				String id = request.getParameter("id");
+				String date = request.getParameter("date");
+				s = "UPDATE OrderTab SET rdate='"+ date + "' where id=" + id + ";";
+				System.out.println(s);
+				db.update(s);
 			}
 		}
 		else {

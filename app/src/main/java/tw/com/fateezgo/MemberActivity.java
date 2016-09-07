@@ -36,7 +36,7 @@ public class MemberActivity extends BasicActivity {
         btnclass =(Button)findViewById(R.id.btnclass);
         btncontact =(Button)findViewById(R.id.btncontact);
         btnlogout =(Button)findViewById(R.id.btnlogout);
-        T01 = (TextView) findViewById(R.id.t01);
+        //T01 = (TextView) findViewById(R.id.t01);
 
 
         // 3.建立事件:

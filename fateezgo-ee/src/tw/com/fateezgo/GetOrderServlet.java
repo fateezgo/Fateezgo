@@ -23,36 +23,39 @@ public class GetOrderServlet extends HttpServlet {
     }
 
     private String queryForName(DbHelper db, String res) {
-    	//memberuid, masteruid, professionalid, pdate, rdate, rplace, estate, sn
+    	//id, memberuid, masteruid, professionalid, pdate, rdate, rplace, estate, sn
 		String sOut = "";
 		String[] resArray = res.split(",");
-		
-		sOut += resArray[0];
+
+		sOut += resArray[0];	//id
 		sOut += ",";
-		sOut += db.queryOneRow("SELECT name FROM MemberData WHERE uid=" + resArray[0]);
-		sOut += ",";
-		
+
 		sOut += resArray[1];
 		sOut += ",";
 		sOut += db.queryOneRow("SELECT name FROM MemberData WHERE uid=" + resArray[1]);
 		sOut += ",";
 		
-		sOut += db.queryOneRow("SELECT professional FROM MasProfData WHERE id=" + resArray[2]);
+		sOut += resArray[2];
+		sOut += ",";
+		sOut += db.queryOneRow("SELECT name FROM MemberData WHERE uid=" + resArray[2]);
 		sOut += ",";
 		
-		sOut += resArray[3];	//pdate
-		sOut += ",";
-
-		sOut += resArray[4];	//rdate
+		sOut += db.queryOneRow("SELECT professional FROM MasProfData WHERE id=" + resArray[3]);
 		sOut += ",";
 		
-		sOut += db.queryOneRow("SELECT place FROM MasPlaData WHERE id=" + resArray[5]);
+		sOut += resArray[4];	//pdate
 		sOut += ",";
 
-		sOut += resArray[6];	//estate
+		sOut += resArray[5];	//rdate
+		sOut += ",";
+		
+		sOut += db.queryOneRow("SELECT place FROM MasPlaData WHERE id=" + resArray[6]);
 		sOut += ",";
 
-		sOut += resArray[7];	//sn
+		sOut += resArray[7];	//estate
+		sOut += ",";
+
+		sOut += resArray[8];	//sn
 
     	return sOut;
     }
@@ -67,12 +70,12 @@ public class GetOrderServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		if (type != null) {
 			if (type.equals("one")) {
-				String s = "SELECT memberuid, masteruid, professionalid, pdate, rdate, rplace, estate, sn FROM OrderTab WHERE id=" + id;
+				String s = "SELECT id, memberuid, masteruid, professionalid, pdate, rdate, rplace, estate, sn FROM OrderTab WHERE id=" + id;
 				String res = db.query(s);
 				sOut = queryForName(db, res);
 			}
-			else {
-				String s = "SELECT memberuid, masteruid, professionalid, pdate, rdate, rplace, estate, sn FROM OrderTab WHERE memberuid=" + id + " or masteruid=" + id + ";";
+			else if (type.equals("list")){
+				String s = "SELECT id, memberuid, masteruid, professionalid, pdate, rdate, rplace, estate, sn FROM OrderTab WHERE memberuid=" + id + " or masteruid=" + id + ";";
 				String res = db.query(s);
 				String[] strArray = res.split("\n");
 				for (int i = 0; i < strArray.length; i++) {
@@ -83,6 +86,10 @@ public class GetOrderServlet extends HttpServlet {
 					sOut += strArray[i];
 					sOut += "\n";
 				}
+			}
+			else if (type.equals("rdate")){
+				String s = "SELECT rdate FROM OrderTab WHERE masteruid=" + id;
+				sOut = db.query(s);
 			}
 		}
 		response.setContentType("text/html;charset=UTF-8");		

@@ -19,11 +19,12 @@ public class MasterDetailsActivity extends BasicActivity{
     private TextView tvMastname;
     private TextView tvMastprof;
     private TextView tvMastdet;
-
+    private final int eva=26;
 
     DbTask db = new DbTask();
     private Button masteva;
-    private Button fatesel;
+    private Button fateresv;
+    private TextView tvmastuid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +32,25 @@ public class MasterDetailsActivity extends BasicActivity{
         setContentView(R.layout.activity_master_details);
 
         imageMast = (ImageView) findViewById(R.id.picMaster);
+        tvmastuid = (TextView) findViewById(R.id.textViewMasteruid);
         tvMastname = (TextView) findViewById(R.id.textViewMastname);
         tvMastprof = (TextView) findViewById(R.id.textViewMastprof);
         tvMastdet = (TextView) findViewById(R.id.textViewMastDet);
         masteva = (Button) findViewById(R.id.masteva);
-        fatesel = (Button) findViewById(R.id.fatesel);
+        fateresv = (Button) findViewById(R.id.fateresv);
 
         final Intent intent = getIntent();
-        String mastname = intent.getStringExtra("Mast_NAME");
-//        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+mastname);
-        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+(intent.getStringExtra("Mast_NAME")));
 
-        fatesel.setOnClickListener(new View.OnClickListener() {
+//        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+mastname);
+        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+(intent.getIntExtra("Mast_NAME",eva)));
+
+        fateresv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(getApplicationContext(),FateSelectionActivity.class);
+                String[] sa = strList.get(0).split(",");
+                System.out.print(sa[0]);
+                intent.putExtra("uid",Integer.valueOf(sa[0]));
                 startActivity(intent1);
             }
         });
@@ -63,9 +68,10 @@ public class MasterDetailsActivity extends BasicActivity{
     @Override
     void doViews() {
         String[] fields = strList.get(0).split(",");
-        tvMastname.setText("老師:"+fields[0]);
-        tvMastprof.setText("專長:"+fields[1]);
-        tvMastdet.setText(fields[2]);
+        tvmastuid.setText(fields[0]+"號老師");
+        tvMastname.setText("暱稱:"+fields[1]);
+        tvMastprof.setText("專長:"+fields[2]);
+        tvMastdet.setText(fields[3]);
 
 
     }

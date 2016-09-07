@@ -83,30 +83,30 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
             case STATE_GET_DATA:
                 String string = strList.get(0);
                 if (string != null) {
-                    //memberuid, mem-name, masteruid, master-name, professional, pdate, rdate, rplace, estate, sn
+                    //id, memberuid, mem-name, masteruid, master-name, professional, pdate, rdate, rplace, estate, sn
                     String[] strArray = string.split(",");
-                    if (Integer.valueOf(strArray[0]) == member.uid()) {
+                    if (Integer.valueOf(strArray[1]) == member.uid()) {
                         tvMemTitle.setText("老師：");
-                        tvMaster.setText(strArray[3]);
+                        tvMaster.setText(strArray[4]);
                         isMaster = false;
                     }
                     else {
                         tvMemTitle.setText("購買者：");
-                        tvMaster.setText(strArray[1]);
+                        tvMaster.setText(strArray[2]);
                         isMaster = true;
                     }
-                    tvDate.setText(strArray[6]);
-                    tvPlace.setText(strArray[7]);
+                    tvDate.setText(strArray[7]);
+                    tvPlace.setText(strArray[8]);
                     Log.d("DETAILED_ORDER", "place: " + strArray[7]);
-                    if (strArray[7].equals("online")) {
+                    if (strArray[8].equals("online")) {
                         tvPlace.setText("Online");
                         bOnline.setVisibility(View.VISIBLE);
                         findViewById(R.id.map).setVisibility(View.INVISIBLE);
                     }
-                    serialNo = strArray[9];
+                    serialNo = strArray[10];
                     tvSN.setText(serialNo);
                     edSN.setVisibility(View.INVISIBLE);
-                    String eState = strArray[8];
+                    String eState = strArray[9];
                     Log.d("DETAILED_ORDER", "estate: " + eState);
                     if (eState.equals("N")) {
                         if (isMaster == true) {
