@@ -27,6 +27,8 @@ public class IntroductionActivity extends BasicActivity {
 
     void confirm(View v) {
         DbTask db = new DbTask();
-        db.execute("http://140.137.218.52:8080/fateezgo-ee/m_intro?id=" + member.uid() + "&data=" + edIntro.getText().toString());
+        String intro = edIntro.getText().toString();
+        intro = intro.replace(" ", "%20");
+        db.execute("http://140.137.218.52:8080/fateezgo-ee/m_intro?id=" + member.uid() + "&data=" + intro);
     }
 }
