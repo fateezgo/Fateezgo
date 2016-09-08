@@ -53,6 +53,7 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
     private int state = STATE_GET_DATA;
     private TextView tvMemTitle;
     private String detailedString;
+    private boolean isMaster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,7 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
 
 
     void doViews() {
-        boolean isMaster = false;
+        isMaster = false;
         switch (state) {
             case STATE_GET_DATA:
                 //String string = strList.get(0);
@@ -289,6 +290,7 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
         Intent intent = new Intent(this, ConsultOnlineActivity.class);
         intent.putExtra("order_id", orderId);
         intent.putExtra("order_sn", serialNo);
+        intent.putExtra("isMaster", isMaster);
         startActivity(intent);
     }
 }

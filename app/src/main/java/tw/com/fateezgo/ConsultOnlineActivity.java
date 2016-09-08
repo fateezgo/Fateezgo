@@ -71,6 +71,7 @@ public class ConsultOnlineActivity extends BasicActivity {
         Intent intent = getIntent();
         roomNo = intent.getIntExtra("order_no", 0) + "";
         sn = intent.getStringExtra("order_sn");
+        isMaster = intent.getBooleanExtra("isMaster", false);
         name = member.name();
         if (isMaster == false) {
             Button b = (Button) findViewById(R.id.b_func);
