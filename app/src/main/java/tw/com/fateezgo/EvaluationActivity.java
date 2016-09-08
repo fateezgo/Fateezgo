@@ -2,6 +2,7 @@ package tw.com.fateezgo;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -46,12 +47,17 @@ public class EvaluationActivity extends BasicActivity {
     private EditText ET01;
     private CheckBox CB1;
     private CompoundButton.OnCheckedChangeListener mylistener;
+    private int orderId;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluation);
+
+        Intent intent = getIntent();
+        orderId = intent.getIntExtra("ORDERID_EXTRA", 2);
+
         //2.連結元件
         Sp01 = (Spinner) findViewById(R.id.spinner);
 //        Tspinner = (TextView) findViewById(R.id.textviewspinner);
@@ -67,11 +73,13 @@ public class EvaluationActivity extends BasicActivity {
         BClear=(Button)   this.findViewById(R.id.bClear);
         BOK=(Button)   this.findViewById(R.id.bOK);
 
-        String id = "";
+
+
+//        String id = "";
 //        BEnd=(Button)   this.findViewById(R.id.bEnd);
 
         //3.建立事件
-
+        CB1.setOnCheckedChangeListener(mylistener);
         Sp01.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
 
             public void onItemSelected(AdapterView<?> parent, View view,
@@ -109,8 +117,7 @@ public class EvaluationActivity extends BasicActivity {
         });
 
 
-        
-        CB1.setOnCheckedChangeListener(mylistener);
+
         CheckBox.OnCheckedChangeListener mylistener = new CheckBox.OnCheckedChangeListener() {
 
             public void onCheckedChanged(CompoundButton buttonView,
@@ -144,10 +151,13 @@ public class EvaluationActivity extends BasicActivity {
                 if (cb1_flag_tmp){
 
                     String type = "description";
-                    String id =  "4" ;
-//                    String id =  Integer.toString(4) ;
+//                    String idvalue =  "4" ;
+                    String idvalue =  Integer.toString(4) ;
                    String contentvalue = ET01.getText().toString();
-                    String webdescription = "http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&description="+contentvalue+"&id="+id ;
+                    String webdescription = "http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&contentvalue="+contentvalue+"&id="+idvalue+"&useUnicode=true&characterEncoding=UTF-8" ;
+//                    String webdescription = "http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&contentvalue="+contentvalue+"&id="+id ;
+
+
                     System.out.println(webdescription);
 //                db.execute("http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&starvalue="+starvalue+"&id="+id);
 
@@ -155,9 +165,13 @@ public class EvaluationActivity extends BasicActivity {
                     db.execute(webdescription);
 
 
-
-
                 }else{
+
+                    Toast.makeText(EvaluationActivity.this,
+                            "請先打勾",
+                            Toast.LENGTH_SHORT).show();
+
+
 //                    Toast.makeText(getApplicationContext(), "密碼錯誤!", Toast.LENGTH_LONG).show();
 //                    Toast toast=new Toast(getApplicationContext());
 //                    toast.setGravity(Gravity.BOTTOM,0,50);
@@ -166,7 +180,7 @@ public class EvaluationActivity extends BasicActivity {
 //                    view.setImageResource(R.drawable.delete);
 //                    toast.setView(view);
 //                    toast.show();
-//
+
 //
                 }
             }});
