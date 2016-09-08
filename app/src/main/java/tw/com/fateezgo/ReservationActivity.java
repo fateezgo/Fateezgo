@@ -101,6 +101,7 @@ public class ReservationActivity extends BasicActivity {
             case SET_ORDER:
                 Intent intent = new Intent(this, ReservePlaceActivity.class);
                 intent.putExtra("masteruid", masteruid);
+                startActivity(intent);
                 break;
             default:
                 break;
