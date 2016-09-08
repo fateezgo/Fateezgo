@@ -31,6 +31,7 @@ public class RegistActivity extends BasicActivity {
     void doViews() {
         Intent intent = new Intent(this, MemberActivity.class);
         startActivity(intent);
+        setResult(RESULT_OK, getIntent());
         finish();
     }
 

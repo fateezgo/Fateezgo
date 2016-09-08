@@ -11,9 +11,10 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="485dp"
-        android:id="@+id/imageView"/>
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:background="@drawable/logofate_frontpage" />
         <!--android:src="@drawable/loginlogo" -->
 
 
@@ -30,7 +31,8 @@
             android:text="登入"
             android:id="@+id/loginbtn"
             android:textSize="25dp"
-            android:layout_weight="0.30" />
+            android:layout_weight="0.30"
+            android:onClick="login" />
 
         <Button
             android:layout_width="wrap_content"
@@ -38,6 +40,7 @@
             android:text="註冊"
             android:id="@+id/registbtn"
             android:layout_weight="0.30"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="register" />
     </LinearLayout>
 </LinearLayout>

@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btn04"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/timeactivity" />
+                android:background="@drawable/place" />
         </LinearLayout>
 
     </LinearLayout>

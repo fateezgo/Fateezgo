@@ -47,6 +47,7 @@ public class LoginActivity extends BasicActivity
                     strArray[1],
                     strArray[2],
                     isMaster);
+            setResult(RESULT_OK, getIntent());
             finish();
         }
         else {
