@@ -52,6 +52,7 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
 
     private int state = STATE_GET_DATA;
     private TextView tvMemTitle;
+    private String detailedString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +62,18 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
         findViews();
 
         Intent intent = getIntent();
-        orderId = intent.getIntExtra("ORDERID_EXTRA", 2);
+        detailedString = intent.getStringExtra("ORDERID_EXTRA");
+        if ((detailedString == null) || detailedString.equals("")) {
+            detailedString = "2,35,Edward,14,Jacky,塔羅,2016-09-01 14:17:06,2016-10-07 14:30:00,台北車站,N,1473141032435";
+        }
 
         //Date date = new Date(intent.getLongExtra("r-date", 0));
         //DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(this);
         //tv.setText(dateFormat.format(date).toString());
 
-        DbTask dbTask = new DbTask();
-        dbTask.execute("http://140.137.218.52:8080/fateezgo-ee/order?type=one&id="+ orderId);
+        //DbTask dbTask = new DbTask();
+        //dbTask.execute("http://140.137.218.52:8080/fateezgo-ee/order?type=one&id="+ orderId);
+        doViews();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -81,7 +86,8 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
         boolean isMaster = false;
         switch (state) {
             case STATE_GET_DATA:
-                String string = strList.get(0);
+                //String string = strList.get(0);
+                String string = detailedString;
                 if (string != null) {
                     //id, memberuid, mem-name, masteruid, master-name, professional, pdate, rdate, rplace, estate, sn
                     String[] strArray = string.split(",");

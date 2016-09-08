@@ -7,22 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tw.com.fateezgo.IntroductionActivity"
+    tools:context="tw.com.fateezgo.ReservePlaceActivity"
     android:orientation="vertical">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="老師簡介："
-        android:id="@+id/textView31"
-        android:layout_weight="1" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/et_intro"
-        android:layout_gravity="center_horizontal"
+        android:id="@+id/list_place"
         android:layout_weight="10" />
 
     <LinearLayout
@@ -36,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="確定"
-            android:id="@+id/bOK"
+            android:id="@+id/button3"
             android:onClick="confirm" />
     </LinearLayout>
 </LinearLayout>

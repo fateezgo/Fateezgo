@@ -25,29 +25,43 @@ public class OrderListActivity extends BasicActivity {
     ArrayList<String> strList = new ArrayList<String>();
     boolean orderlist_bl = false;
     String[] orderlist_item;
-
+    int nameuid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list);
-
+        nameuid = member.uid();
         OrderListTask olt = new OrderListTask();
-        olt.execute("http://140.137.218.66:8080/fateezgo-ee/ordlist");
+        olt.execute("http://140.137.218.66:8080/fateezgo-ee/order?type=list&id="+nameuid);
     }
 
     @Override
     void doViews() {
         OrderListAdapter adapter = new OrderListAdapter(this);
-        final Intent orderintent = new Intent(this, DetailedOrderMapsActivity.class);
         ListView lv_ord = (ListView) findViewById(R.id.lv_ord);
         lv_ord.setAdapter(adapter);
         lv_ord.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                orderintent.putExtra("ORDERID_EXTRA", orderlist_item[0]);
+                orderlist_item = strList.get(i).split(",");
+                if(orderlist_item[7].equals("null") || orderlist_item[7].equals("") || orderlist_item[8].equals("null") || orderlist_item[8].equals("")){
+                    orderlist_bl = false;
+                } else {
+                    orderlist_bl = true;
+                }
+                System.out.println(orderlist_bl);
                 if(orderlist_bl){
-                    startActivity(orderintent);
+                    Intent intent = new Intent(getApplicationContext(), DetailedOrderMapsActivity.class);
+                    intent.putExtra("ORDERID_EXTRA", strList.get(i));
+                    startActivity(intent);
+                }
+                else {
+                    //id, memberuid, mem-name, masteruid, master-name, professionalid, pdate, rdate, rplace, estate, sn
+                    Intent intent = new Intent(getApplicationContext(), ReservationActivity.class);
+                    intent.putExtra("masteruid", Integer.valueOf(orderlist_item[3]));
+                    intent.putExtra("order_id", Integer.valueOf(orderlist_item[0]));
+                    startActivity(intent);
                 }
             }
         });
@@ -83,21 +97,21 @@ public class OrderListActivity extends BasicActivity {
             TextView txt_ord = (TextView) view.findViewById(R.id.txt_ord_ord);
             TextView txt_crd = (TextView) view.findViewById(R.id.txt_ord_crd);
             orderlist_item = strList.get(i).split(",");
-            String nameuid = String.valueOf(member.uid());
-            System.out.println(nameuid);
-            if(orderlist_item[1].equals(nameuid)){
+//            String nameuid = String.valueOf(member.uid());
+//            System.out.println(nameuid);
+//            if(orderlist_item[1].equals(nameuid)||orderlist_item[8].equals(nameuid)){
                 txt_id.setText(orderlist_item[0]);
-                txt_date.setText(orderlist_item[2]);
-                txt_msg.setText(orderlist_item[3]+"/"+orderlist_item[4]);
-                if(orderlist_item[5].equals("null") || orderlist_item[6].equals("null")){
+                txt_date.setText(orderlist_item[6]);
+                txt_msg.setText(orderlist_item[4]+"/"+orderlist_item[5]);
+                if(orderlist_item[7].equals("null") || orderlist_item[7].equals("") || orderlist_item[8].equals("null") || orderlist_item[8].equals("")){
                     txt_ord.setText("否");
-                    orderlist_bl = false;
+//                    orderlist_bl = false;
                 } else{
                     txt_ord.setText("是");
-                    orderlist_bl = true;
+//                    orderlist_bl = true;
                 }
-                txt_crd.setText(orderlist_item[7]);
-            }
+                txt_crd.setText(orderlist_item[9]);
+//            }
             return view;
         }
     }

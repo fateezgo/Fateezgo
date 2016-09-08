@@ -87,9 +87,8 @@ public class GetOrderServlet extends HttpServlet {
 					sOut += "\n";
 				}
 			}
-			else if (type.equals("rdate")){
-				String s = "SELECT rdate FROM OrderTab WHERE masteruid=" + id;
-				sOut = db.query(s);
+			else if (type.equals("place")) {
+				
 			}
 		}
 		response.setContentType("text/html;charset=UTF-8");		

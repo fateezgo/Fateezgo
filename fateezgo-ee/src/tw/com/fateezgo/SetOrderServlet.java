@@ -70,6 +70,16 @@ public class SetOrderServlet extends HttpServlet {
 				System.out.println(s);
 				db.update(s);
 			}
+			else if (type.equals("place")){
+				String id = request.getParameter("id");
+				String data = request.getParameter("place");
+				s = "UPDATE OrderTab SET rplace='"+ data + "' where id=" + id + ";";
+				System.out.println(s);
+				db.update(s);
+				s = "UPDATE OrderTab SET estate='E' where id=" + id + ";";
+				System.out.println(s);
+				db.update(s);
+			}
 		}
 		else {
 			s = "UPDATE OrderData SET star=4 where id=1;";
