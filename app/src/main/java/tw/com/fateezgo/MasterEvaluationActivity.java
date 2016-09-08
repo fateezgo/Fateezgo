@@ -102,13 +102,15 @@ public class MasterEvaluationActivity extends AppCompatActivity {
             TextView txtText = (TextView) view.findViewById(R.id.tv_text);
 
             String[] fields = strList.get(i).split("%#");
-            if (fields[2].equals("null")) {
-                return null;
-            }else {
+            System.out.println(fields[2]);
+//            if ( fields[1].equals("")) {
+//                        if ( fields[2].equals("null") ) {
+//                return null;
+//            }else {
                 txtName.setText(fields[0]);
                 txtText.setText(fields[1]);
                 return view;
-            }
+//            }
 
 
         }
