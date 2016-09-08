@@ -48,7 +48,10 @@ public class ReservePlaceActivity extends BasicActivity {
                 });
                 break;
             case SET_DATA:
-
+                Intent intent = new Intent(this, OrderListActivity.class);
+                startActivity(intent);
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
         }
     }

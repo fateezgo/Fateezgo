@@ -18,6 +18,7 @@ public class ReservationActivity extends BasicActivity {
     private static final int GET_ORDER_MASTER = 1;
     private static final int GET_AVA_TIME = 2;
     private static final int SET_ORDER = 3;
+    private static final int FUNC_PLACE = 100;
     private int masteruid;
     private int orderuid;
     private CustomCalendarView cv;
@@ -101,7 +102,7 @@ public class ReservationActivity extends BasicActivity {
             case SET_ORDER:
                 Intent intent = new Intent(this, ReservePlaceActivity.class);
                 intent.putExtra("masteruid", masteruid);
-                startActivity(intent);
+                startActivityForResult(intent, FUNC_PLACE);
                 break;
             default:
                 break;
@@ -117,5 +118,15 @@ public class ReservationActivity extends BasicActivity {
         state = SET_ORDER;
         DbTask db = new DbTask();
         db.execute("http://140.137.218.52:8080/fateezgo-ee/SetOrder?type=rdate&id=" + orderuid + "&date=" + strDate);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == FUNC_PLACE) {
+            if (resultCode == RESULT_OK) {
+                finish();
+            }
+        }
     }
 }
