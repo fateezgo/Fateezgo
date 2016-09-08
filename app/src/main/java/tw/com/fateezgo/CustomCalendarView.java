@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,11 +41,12 @@ public class CustomCalendarView extends LinearLayout {
     private TextView txtDate;
     private GridView grid;
     private LayoutInflater inflater;
-    private Calendar currentDate = Calendar.getInstance();;
+    private Calendar currentDate = Calendar.getInstance();
     private int[] colors = { R.color.cal_summer, R.color.cal_fall, R.color.cal_winter, R.color.cal_spring };
     private int[] monthSeason = {2, 2, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2};
     private CalendarAdapter calAdapter;
     private int type = CAL_SEL_ONE;
+    private int avaTime = 0;
 
     public CustomCalendarView(Context context)
     {
@@ -110,6 +112,16 @@ public class CustomCalendarView extends LinearLayout {
         if (type == CAL_SEL_MUL) {
             calendar.add(Calendar.MONTH, 2);
         }
+
+        // update title
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+        if (type == CAL_SEL_ONE) {
+            txtDate.setText(sdf.format(currentDate.getTime()));
+        }
+        else {
+            txtDate.setText(sdf.format(calendar.getTime()));
+        }
+
         // determine the cell for current month's beginning
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         int monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 1;
@@ -128,10 +140,6 @@ public class CustomCalendarView extends LinearLayout {
         calAdapter = new CalendarAdapter(getContext(), cells, events);
         grid.setAdapter(calAdapter);
 
-        // update title
-        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
-        txtDate.setText(sdf.format(currentDate.getTime()));
-
         // set header color according to current season
         int season = monthSeason[currentDate.get(Calendar.MONTH)];
         header.setBackgroundColor(getResources().getColor(colors[season]));
@@ -140,6 +148,7 @@ public class CustomCalendarView extends LinearLayout {
     public Date getSelected() {
         return (Date)calAdapter.cbSelected.getTag();
     }
+    public int getMulSelected() { return avaTime; }
 
     private class CalendarAdapter extends ArrayAdapter<Date> {
         private LayoutInflater inflater;
@@ -160,21 +169,21 @@ public class CustomCalendarView extends LinearLayout {
             int day = date.getDate();
             int month = date.getMonth();
             int year = date.getYear();
-
-            // today
-            Date today = new Date();
+            Date today;
+            if (type == CAL_SEL_MUL) {
+                Calendar calendar = (Calendar)currentDate.clone();
+                calendar.add(Calendar.MONTH, 2);
+                today = calendar.getTime();
+            }
+            else {// today
+                today = new Date();
+            }
 
             // inflate item if it does not exist yet
             if (view == null)
                 view = inflater.inflate(R.layout.calendar_day, viewGroup, false);
 
             CheckBox cb = (CheckBox) view.findViewById(R.id.cbReserve);
-            Calendar c = Calendar.getInstance();
-            c.setTime(date);
-            int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);    //2 for tuesday
-            if ((dayOfWeek == 1) || (dayOfWeek == 7)) {
-                cb.setVisibility(INVISIBLE);
-            }
 
             if (eventDays != null)
             {
@@ -185,9 +194,15 @@ public class CustomCalendarView extends LinearLayout {
                             eventDate.getYear() == year)
                     {
                         // mark this day for event
-                        cb.setVisibility(INVISIBLE);
-                        LinearLayout ll = (LinearLayout) view.findViewById(R.id.cal_item);
-                        ll.setBackgroundResource(R.drawable.reminder);
+                        if (type == CAL_SEL_ONE) {
+                            cb.setVisibility(INVISIBLE);
+                            LinearLayout ll = (LinearLayout) view.findViewById(R.id.cal_item);
+                            ll.setBackgroundResource(R.drawable.reminder);
+                        }
+                        else {
+                            cb.setChecked(true);
+                            avaTime |= (1 << (eventDate.getDate()-1));
+                        }
                         break;
                     }
                 }
@@ -204,6 +219,16 @@ public class CustomCalendarView extends LinearLayout {
                         cbSelected = (CheckBox) view;
                         cbSelected.setChecked(true);
                     }
+                    else {
+                        CheckBox checkBox = (CheckBox)view;
+                        Date d = (Date)checkBox.getTag();
+                        Log.d("Calendar", "day: " + d.getDate());
+                        if (checkBox.isChecked() == true)
+                            avaTime |= (1 << (d.getDate()-1));
+                        else
+                            avaTime &= ~(1 << (d.getDate()-1));
+                        Log.d("Calendar", "avaTime: " + avaTime);
+                    }
                 }
             });
 
@@ -216,12 +241,16 @@ public class CustomCalendarView extends LinearLayout {
             {
                 // if this day is outside current month, grey it out
                 tvDay.setTextColor(getResources().getColor(R.color.cal_grey));
+                cb.setVisibility(INVISIBLE);
             }
             else if (date.getDate() == today.getDate())
             {
-                // if it is today, set it to blue/bold
-                tvDay.setTypeface(null, Typeface.BOLD);
-                tvDay.setTextColor(getResources().getColor(R.color.cal_today));
+                if (type == CAL_SEL_ONE) {
+                    // if it is today, set it to blue/bold
+                    tvDay.setTypeface(null, Typeface.BOLD);
+                    tvDay.setTextColor(getResources().getColor(R.color.cal_today));
+                    cb.setVisibility(INVISIBLE);
+                }
             }
 
             // set text
