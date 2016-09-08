@@ -25,7 +25,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MasterListActivity extends AppCompatActivity {
+public class MasterListActivity extends BasicActivity {
 
     public static final int FREE =100;
     public static final int SEARCH = 200;
@@ -38,7 +38,7 @@ public class MasterListActivity extends AppCompatActivity {
     int[] resIds = {R.drawable.femalemast1, R.drawable.malemast1,
             R.drawable.malemast2, R.drawable.femalemast2};
     ArrayList<String> strList = new ArrayList<String>();
-    LoginTask lt = new LoginTask();
+    DbTask lt = new DbTask();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,41 +131,6 @@ public class MasterListActivity extends AppCompatActivity {
             return view;
         }
     }
-
-
-    class LoginTask extends AsyncTask<String, Void, ArrayList<String>> {
-
-        @Override
-        protected ArrayList<String> doInBackground(String... strings) {
-            try {
-                URL url = new URL(strings[0]);
-                InputStream is = url.openStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(is));
-                String strLine;
-                while ((strLine = in.readLine()) != null) {
-                    strList.add(strLine);
-                }
-                in.close();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return strList;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<String> strings) {
-            super.onPostExecute(strings);
-            for (int i = 0; i < strings.size(); i++) {
-
-
-            }
-            doViews();
-        }
-    }
-
-
 }
 
 

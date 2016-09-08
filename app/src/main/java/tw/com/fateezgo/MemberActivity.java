@@ -31,6 +31,11 @@ public class MemberActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member);
 
+        if (member.isLogin() == false) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+
         // 2.連結元件
         btnmember=(Button)findViewById(R.id.btnmember);
         btnclass =(Button)findViewById(R.id.btnclass);

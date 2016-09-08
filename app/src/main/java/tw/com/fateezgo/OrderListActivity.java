@@ -32,7 +32,7 @@ public class OrderListActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list);
         nameuid = member.uid();
-        OrderListTask olt = new OrderListTask();
+        DbTask olt = new DbTask();
         olt.execute("order?type=list&id="+nameuid);
     }
 
@@ -113,36 +113,6 @@ public class OrderListActivity extends BasicActivity {
                 txt_crd.setText(orderlist_item[9]);
 //            }
             return view;
-        }
-    }
-    class OrderListTask extends AsyncTask<String, Void, ArrayList<String>>{
-        @Override
-        protected ArrayList<String> doInBackground(String... strings) {
-            try {
-                URL url = new URL(strings[0]);
-                InputStream is = url.openStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(is));
-                String strLine;
-                while ((strLine = in.readLine()) != null){
-                    strList.add(strLine);
-                }
-                in.close();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return strList;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<String> strings) {
-            super.onPostExecute(strings);
-            System.out.println("count:" + strings.size());
-            for (int i = 0; i < strings.size(); i++){
-                System.out.println(strings.get(i));
-            }
-            doViews();
         }
     }
 }
