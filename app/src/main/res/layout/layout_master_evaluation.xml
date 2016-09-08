@@ -13,19 +13,18 @@
         android:id="@+id/linear_layout">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:id="@+id/tv_name"
             android:textSize="13sp"
-            android:textColor="#0455be"
-            android:layout_marginRight="10dp" />
+            android:textColor="#0456c1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_text"
             android:textSize="13sp"
-            android:textColor="#3b3b3c" />
+            android:textColor="#050505" />
 
     </LinearLayout>
 
