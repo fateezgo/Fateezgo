@@ -1,5 +1,6 @@
 package tw.com.fateezgo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -98,7 +99,8 @@ public class ReservationActivity extends BasicActivity {
                 cv.updateCalendar(events, CustomCalendarView.CAL_SEL_ONE);
                 break;
             case SET_ORDER:
-                // go to next activity
+                Intent intent = new Intent(this, ReservePlaceActivity.class);
+                intent.putExtra("masteruid", masteruid);
                 break;
             default:
                 break;

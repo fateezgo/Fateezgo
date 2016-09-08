@@ -53,14 +53,14 @@ public class OrderListActivity extends BasicActivity {
                 System.out.println(orderlist_bl);
                 if(orderlist_bl){
                     Intent intent = new Intent(getApplicationContext(), DetailedOrderMapsActivity.class);
-                    intent.putExtra("ORDERID_EXTRA", orderlist_item);
+                    intent.putExtra("ORDERID_EXTRA", strList.get(i));
                     startActivity(intent);
                 }
                 else {
                     //id, memberuid, mem-name, masteruid, master-name, professionalid, pdate, rdate, rplace, estate, sn
                     Intent intent = new Intent(getApplicationContext(), ReservationActivity.class);
-                    intent.putExtra("masteruid", orderlist_item[3]);
-                    intent.putExtra("order_id", orderlist_item[0]);
+                    intent.putExtra("masteruid", Integer.valueOf(orderlist_item[3]));
+                    intent.putExtra("order_id", Integer.valueOf(orderlist_item[0]));
                     startActivity(intent);
                 }
             }

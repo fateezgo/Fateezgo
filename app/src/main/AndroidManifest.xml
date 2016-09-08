@@ -34,7 +34,7 @@
         <activity android:name=".ModifyMemberActivity" />
         <activity
             android:name=".MasterEvaluationActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MasterNewActivity" />
         <activity android:name=".FreeMasterActivity" />
         <activity
@@ -44,7 +44,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ConsultOnlineActivity"></activity>
+        <activity android:name=".ConsultOnlineActivity" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".IntroductionActivity" />
@@ -60,7 +60,6 @@
         <activity android:name=".RegistMasterActivity" />
         <activity android:name=".RegistMemberActivity" />
         <activity android:name=".FateSelectionActivity" />
-
         <activity android:name=".SpreadActivity" />
         <activity android:name=".CardActivity" />
 
@@ -79,7 +78,8 @@
 
         <activity
             android:name=".DetailedOrderMapsActivity"
-            android:label="@string/title_activity_detailed_order_maps"></activity>
+            android:label="@string/title_activity_detailed_order_maps" />
+        <activity android:name=".ReservePlaceActivity"></activity>
     </application>
 
 </manifest>
