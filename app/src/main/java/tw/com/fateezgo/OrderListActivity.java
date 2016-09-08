@@ -39,22 +39,29 @@ public class OrderListActivity extends BasicActivity {
     @Override
     void doViews() {
         OrderListAdapter adapter = new OrderListAdapter(this);
-        final Intent orderintent = new Intent(this, DetailedOrderMapsActivity.class);
         ListView lv_ord = (ListView) findViewById(R.id.lv_ord);
         lv_ord.setAdapter(adapter);
         lv_ord.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 orderlist_item = strList.get(i).split(",");
-                orderintent.putExtra("ORDERID_EXTRA", orderlist_item);
                 if(orderlist_item[7].equals("null") || orderlist_item[7].equals("") || orderlist_item[8].equals("null") || orderlist_item[8].equals("")){
                     orderlist_bl = false;
-                } else{
+                } else {
                     orderlist_bl = true;
                 }
                 System.out.println(orderlist_bl);
                 if(orderlist_bl){
-                    startActivity(orderintent);
+                    Intent intent = new Intent(getApplicationContext(), DetailedOrderMapsActivity.class);
+                    intent.putExtra("ORDERID_EXTRA", orderlist_item);
+                    startActivity(intent);
+                }
+                else {
+                    //id, memberuid, mem-name, masteruid, master-name, professionalid, pdate, rdate, rplace, estate, sn
+                    Intent intent = new Intent(getApplicationContext(), ReservationActivity.class);
+                    intent.putExtra("masteruid", orderlist_item[3]);
+                    intent.putExtra("order_id", orderlist_item[0]);
+                    startActivity(intent);
                 }
             }
         });
