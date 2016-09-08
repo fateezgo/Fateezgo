@@ -236,19 +236,24 @@ public class CustomCalendarView extends LinearLayout {
             tvDay.setTypeface(null, Typeface.NORMAL);
             tvDay.setTextColor(Color.BLACK);
 
-            if (date.getMonth() != today.getMonth() ||
-                    date.getYear() != today.getYear())
-            {
-                // if this day is outside current month, grey it out
-                tvDay.setTextColor(getResources().getColor(R.color.cal_grey));
-                cb.setVisibility(INVISIBLE);
-            }
-            else if (date.getDate() == today.getDate())
-            {
-                if (type == CAL_SEL_ONE) {
+            if (type == CAL_SEL_ONE) {
+                if ((date.getMonth() != today.getMonth() && date.getMonth() != today.getMonth()+1) ||
+                        date.getYear() != today.getYear()) {
+                    // if this day is outside current month, grey it out
+                    tvDay.setTextColor(getResources().getColor(R.color.cal_grey));
+                    cb.setVisibility(INVISIBLE);
+                } else if (date.getMonth() == today.getMonth() && date.getDate() <= today.getDate()) {
                     // if it is today, set it to blue/bold
                     tvDay.setTypeface(null, Typeface.BOLD);
                     tvDay.setTextColor(getResources().getColor(R.color.cal_today));
+                    cb.setVisibility(INVISIBLE);
+                }
+            }
+            else {
+                if (date.getMonth() != today.getMonth() ||
+                        date.getYear() != today.getYear()) {
+                    // if this day is outside current month, grey it out
+                    tvDay.setTextColor(getResources().getColor(R.color.cal_grey));
                     cb.setVisibility(INVISIBLE);
                 }
             }
