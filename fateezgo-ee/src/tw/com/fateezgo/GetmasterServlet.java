@@ -38,10 +38,9 @@ public class GetmasterServlet extends HttpServlet {
 		DbHelper db = new DbHelper();
 		if (requestType.equals("free")) {
 			
-			String s="SELECT MemberData.name,MasProfData.professional "
+			String s="SELECT MemberData.uid, MemberData.name,MasProfData.professional "
 								+ "FROM MemberData,MasProfData "
-								+ "WHERE MemberData.uid=MasProfData.uid and MasProfData.cost=0 "
-								+ "ORDER BY MemberData.uid";
+								+ "WHERE MemberData.uid=MasProfData.uid and MasProfData.cost=0";
 			response.getWriter().append(db.query(s));
 		} else if(requestType.equals("prof")){
 			String s="";

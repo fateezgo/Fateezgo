@@ -43,12 +43,12 @@ public class MasterEvaluationActivity extends AppCompatActivity {
 
 //        stardata = new ArrayList<String>();
         Intent intent = getIntent();
-        masuid = getIntent().getIntExtra("uid", 15);
+        masuid = getIntent().getIntExtra("uid", 26);
         System.out.println(masuid);
 
 //        String webstar = "http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&starvalue="+starvalue+"&id="+id ;
 
-        String weburl = "http://140.137.218.70:8080/fateezgo-ee/masev?masuid="+masuid ;
+        String weburl = "http://140.137.218.77:8080/fateezgo-ee/masev?masuid="+masuid ;
         System.out.println(weburl) ;
         DbTask lt = new DbTask();
         lt.execute(weburl);

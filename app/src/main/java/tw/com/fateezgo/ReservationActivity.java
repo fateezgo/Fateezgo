@@ -35,7 +35,7 @@ public class ReservationActivity extends BasicActivity {
         orderuid = getIntent().getIntExtra("order_id", 2);
         state = GET_ORDER_MASTER;
         DbTask db = new DbTask();
-        db.execute("http://140.137.218.52:8080/fateezgo-ee/order?type=rdate&id=" + masteruid);
+        db.execute("http://140.137.218.77:8080/fateezgo-ee/order?type=rdate&id=" + masteruid);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ReservationActivity extends BasicActivity {
                 String strMonth = yearMonth + "01";
                 strList.clear();
                 DbTask db = new DbTask();
-                db.execute("http://140.137.218.52:8080/fateezgo-ee/AvaTime?type=get2&id=" + masteruid + "&mon=" + strMonth);
+                db.execute("http://140.137.218.77:8080/fateezgo-ee/AvaTime?type=get2&id=" + masteruid + "&mon=" + strMonth);
                 break;
             case GET_AVA_TIME:
                 int avaTime = 0;
@@ -118,7 +118,7 @@ public class ReservationActivity extends BasicActivity {
         strDate += "%2014:30:00";
         state = SET_ORDER;
         DbTask db = new DbTask();
-        db.execute("http://140.137.218.52:8080/fateezgo-ee/SetOrder?type=rdate&id=" + orderuid + "&date=" + strDate);
+        db.execute("http://140.137.218.77:8080/fateezgo-ee/SetOrder?type=rdate&id=" + orderuid + "&date=" + strDate);
     }
 
     @Override

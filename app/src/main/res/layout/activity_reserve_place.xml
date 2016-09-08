@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tw.com.fateezgo.ReservePlaceActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/backgbase">
 
     <ListView
         android:layout_width="wrap_content"

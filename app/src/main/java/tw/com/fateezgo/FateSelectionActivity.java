@@ -42,10 +42,10 @@ public class FateSelectionActivity extends BasicActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fate_selection);
 
-        id = getIntent().getIntExtra("uid", 15);
-
+        id = getIntent().getIntExtra("uid", 26);
+        System.out.print("Fateselection"+id);
         DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.52:8080/fateezgo-ee/GetMasterProf?uid="+ id);
+        lt.execute("http://140.137.218.77:8080/fateezgo-ee/GetMasterProf?uid="+ id);
 
 
         buy01= (Button) findViewById(R.id.buy01);
@@ -95,9 +95,9 @@ public class FateSelectionActivity extends BasicActivity{
             textInfo = (TextView)view.findViewById(R.id.info_Id);
             textInfo.setText(strArray[1]);
             TextView tvCost = (TextView) view.findViewById(R.id.tv_cost);
-            tvCost.setText(strArray[2]);
+            tvCost.setText("金額:"+strArray[2]);
             TextView tvLeadTime = (TextView) view.findViewById(R.id.tv_leadtime);
-            tvLeadTime.setText(strArray[3]);
+            tvLeadTime.setText("時程:"+strArray[3]);
             CheckBox checkBox= (CheckBox) view.findViewById(R.id.info_checkbox);
             checkBox.setTag(position);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
