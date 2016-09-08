@@ -39,13 +39,14 @@ public class DetailedOrderActivity extends BasicActivity {
         //tv.setText(dateFormat.format(date).toString());
 
         DbTask dbTask = new DbTask();
-        dbTask.execute("http://140.137.218.52:8080/fateezgo-ee/order?id="+ orderId);
+        dbTask.execute("http://140.137.218.52:8080/fateezgo-ee/order?type=one&id="+ orderId);
     }
 
     void doViews() {
         String string = strList.get(0);
         if (string != null) {
             String[] strArray = string.split(",");
+            //id, memberuid, name, masteruid, name, professionalid, pdate, rdate, rplace, estate, sn
             tvMaster.setText(strArray[0]);
             tvDate.setText(strArray[1]);
             tvPlace.setText(strArray[2]);
