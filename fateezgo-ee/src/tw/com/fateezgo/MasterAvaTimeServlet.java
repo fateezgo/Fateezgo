@@ -57,6 +57,15 @@ public class MasterAvaTimeServlet extends HttpServlet {
 				String mon = request.getParameter("mon");
 				s = "SELECT time FROM MasAvleTimeData WHERE uid=" + id + " and month='" + mon + "';";
 				String res = db.query(s);
+				System.out.println(res);
+				response.setContentType("text/html;charset=UTF-8");		
+				response.getWriter().append(res);
+			}
+			else if (type.equals("get2")) {
+				String id = request.getParameter("id");
+				String mon = request.getParameter("mon");
+				s = "SELECT time FROM MasAvleTimeData WHERE uid=" + id + " and month='" + mon + "';";
+				String res = db.query(s);
 				String[] strArray = mon.split("-");
 				int month = Integer.valueOf(strArray[1]) + 1;
 				mon = strArray[0] + "-" + month + "-" + strArray[2];

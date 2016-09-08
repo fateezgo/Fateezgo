@@ -61,7 +61,7 @@ public class ReservationActivity extends BasicActivity {
                 String strMonth = yearMonth + "01";
                 strList.clear();
                 DbTask db = new DbTask();
-                db.execute("http://140.137.218.52:8080/fateezgo-ee/AvaTime?type=get&id=" + masteruid + "&mon=" + strMonth);
+                db.execute("http://140.137.218.52:8080/fateezgo-ee/AvaTime?type=get2&id=" + masteruid + "&mon=" + strMonth);
                 break;
             case GET_AVA_TIME:
                 int avaTime = 0;
