@@ -43,7 +43,7 @@ public class MasterDetailsActivity extends BasicActivity{
         String mastuid = intent.getStringExtra("Mast_NAME");
         System.out.println("mastuid:"+mastuid);
 
-        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+mastuid);
+        db.execute("getmastdet?mastname="+mastuid);
 
         fateresv.setOnClickListener(new View.OnClickListener() {
             @Override

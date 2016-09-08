@@ -21,7 +21,7 @@ public class ModifyMemberActivity extends BasicActivity {
         edtpw = (EditText) findViewById(R.id.edtmempw);
         edtmail = (EditText) findViewById(R.id.edtmememail);
 
-        lt.execute("http://140.137.218.77:8080/fateezgo-ee/getmaster?qtype=\"+requestType");
+        lt.execute("getmaster?qtype=\"+requestType");
     }
 
     @Override

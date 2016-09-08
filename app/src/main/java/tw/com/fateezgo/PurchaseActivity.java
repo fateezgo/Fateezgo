@@ -57,7 +57,7 @@ public class PurchaseActivity extends BasicActivity {
         }
         Log.d("Purchase", "prof = " + prof);
         DbTask dbTask = new DbTask();
-        dbTask.execute("http://140.137.218.77:8080/fateezgo-ee/SetOrder?type=insert" +
+        dbTask.execute("SetOrder?type=insert" +
                 "&memuid=" + member.uid() +
                 "&masteruid=" + masterUid +
                 "&professionalid=" + prof);

@@ -30,7 +30,7 @@ public class ReservePlaceActivity extends BasicActivity {
         orderuid = getIntent().getIntExtra("order_id", 2);
         state = GET_DATA;
         DbTask db = new DbTask();
-        db.execute("http://140.137.218.77:8080/fateezgo-ee/GetPlace?uid=" + masteruid);
+        db.execute("GetPlace?uid=" + masteruid);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class ReservePlaceActivity extends BasicActivity {
         int select = (int) cbSelected.getTag();
         String[] strings = strList.get(select).split(",");
         Log.d("ReservePlace", "place: " + strings[0]);
-        db.execute("http://140.137.218.77:8080/fateezgo-ee/SetOrder?type=place&id=" + orderuid + "&place=" + strings[0]);
+        db.execute("SetOrder?type=place&id=" + orderuid + "&place=" + strings[0]);
     }
 
     class MyAdapter extends BaseAdapter {

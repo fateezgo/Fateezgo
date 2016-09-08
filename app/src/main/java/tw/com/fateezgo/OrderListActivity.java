@@ -33,7 +33,7 @@ public class OrderListActivity extends BasicActivity {
         setContentView(R.layout.activity_order_list);
         nameuid = member.uid();
         OrderListTask olt = new OrderListTask();
-        olt.execute("http://140.137.218.77:8080/fateezgo-ee/order?type=list&id="+nameuid);
+        olt.execute("order?type=list&id="+nameuid);
     }
 
     @Override

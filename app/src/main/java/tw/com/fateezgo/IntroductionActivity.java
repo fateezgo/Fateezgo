@@ -29,6 +29,6 @@ public class IntroductionActivity extends BasicActivity {
         DbTask db = new DbTask();
         String intro = edIntro.getText().toString();
         intro = intro.replace(" ", "%20");
-        db.execute("http://140.137.218.52:8080/fateezgo-ee/m_intro?id=" + member.uid() + "&data=" + intro);
+        db.execute("m_intro?id=" + member.uid() + "&data=" + intro);
     }
 }

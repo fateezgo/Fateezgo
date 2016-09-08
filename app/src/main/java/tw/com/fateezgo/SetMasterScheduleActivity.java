@@ -35,7 +35,7 @@ public class SetMasterScheduleActivity extends BasicActivity {
         yearMonth = year + "-" + month + "-";
         String strMonth = yearMonth + "01";
         DbTask db = new DbTask();
-        db.execute("http://140.137.218.52:8080/fateezgo-ee/AvaTime?type=get&id=" + masteruid + "&mon=" + strMonth);
+        db.execute("fateezgo-ee/AvaTime?type=get&id=" + masteruid + "&mon=" + strMonth);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class SetMasterScheduleActivity extends BasicActivity {
         Log.d("MasterSchedule", "ava time: " + cv.getMulSelected());
         DbTask db = new DbTask();
         String month = yearMonth + "01";
-        db.execute("http://140.137.218.52:8080/fateezgo-ee/AvaTime?type=set&id=" + masteruid + "&mon=" + month + "&time=" + cv.getMulSelected());
+        db.execute("AvaTime?type=set&id=" + masteruid + "&mon=" + month + "&time=" + cv.getMulSelected());
     }
 
 }

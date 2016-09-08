@@ -45,7 +45,7 @@ public class FateSelectionActivity extends BasicActivity{
         id = getIntent().getIntExtra("uid", 26);
         System.out.print("Fateselection"+id);
         DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.77:8080/fateezgo-ee/GetMasterProf?uid="+ id);
+        lt.execute("GetMasterProf?uid="+ id);
 
 
         buy01= (Button) findViewById(R.id.buy01);

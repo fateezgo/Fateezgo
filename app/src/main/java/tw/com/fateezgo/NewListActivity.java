@@ -25,7 +25,7 @@ public class NewListActivity extends AppCompatActivity {
     ArrayList<String> strlsit = new ArrayList<>();
 
     public void login(View view){
-        String s= "http://140.137.218.54:8080/fateezgo/getmaster?userid="+ userid ;
+        String s= "getmaster?userid="+ userid ;
         new LoginTask().execute(s);
     }
 

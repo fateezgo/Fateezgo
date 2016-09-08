@@ -154,7 +154,7 @@ public class EvaluationActivity extends BasicActivity {
 //                    String idvalue =  "4" ;
                     String idvalue =  Integer.toString(4) ;
                    String contentvalue = ET01.getText().toString();
-                    String webdescription = "http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&contentvalue="+contentvalue+"&id="+idvalue+"&useUnicode=true&characterEncoding=UTF-8" ;
+                    String webdescription = "weav?type="+type+"&contentvalue="+contentvalue+"&id="+idvalue+"&useUnicode=true&characterEncoding=UTF-8" ;
 //                    String webdescription = "http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&contentvalue="+contentvalue+"&id="+id ;
 
 
@@ -251,7 +251,7 @@ public class EvaluationActivity extends BasicActivity {
                 String id = "6";
 
 
-                String webstar = "http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&starvalue="+starvalue+"&id="+id ;
+                String webstar = "weav?type="+type+"&starvalue="+starvalue+"&id="+id ;
 //                db.execute("http://140.137.218.70:8080/fateezgo-ee/weav?type="+type+"&starvalue="+starvalue+"&id="+id);
 
                 DbTask db = new DbTask();

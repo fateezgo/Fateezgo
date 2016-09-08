@@ -160,7 +160,7 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
                             tvSN.setText("驗證成功");
                             state = STATE_SET_ORDER_ESTATE;
                             DbTask db = new DbTask();
-                            db.execute("http://140.137.218.52:8080/fateezgo-ee/SetOrder?id=" + orderId + "&type=estate&value=E");
+                            db.execute("SetOrder?id=" + orderId + "&type=estate&value=E");
                         } else {
                             tvSN.setText("驗證失敗");
                         }

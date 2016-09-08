@@ -56,7 +56,7 @@ public class MasterListActivity extends AppCompatActivity {
         switch (type){
             case 100:
                 requestType="free";
-                lt.execute("http://140.137.218.77:8080/fateezgo-ee/getmaster?qtype="+requestType);
+                lt.execute("getmaster?qtype="+requestType);
             break;
 
             case 200:
@@ -64,7 +64,7 @@ public class MasterListActivity extends AppCompatActivity {
 
             case 300:
                 requestType="prof";
-                lt.execute("http://140.137.218.77:8080/fateezgo-ee/getmaster?qtype="+requestType+"&profType="+profType);
+                lt.execute("getmaster?qtype="+requestType+"&profType="+profType);
             break;
         }
 

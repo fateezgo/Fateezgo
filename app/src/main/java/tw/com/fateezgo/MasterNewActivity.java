@@ -44,7 +44,7 @@ public class MasterNewActivity extends AppCompatActivity {
 
 
         DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.70:8080/fateezgo-ee/masev");
+        lt.execute("masev");
 
 
 

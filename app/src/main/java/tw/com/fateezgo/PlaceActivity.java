@@ -35,7 +35,7 @@ public class PlaceActivity extends BasicActivity {
         setContentView(R.layout.activity_place);
 
         PlaceTask pt = new PlaceTask();
-        pt.execute("http://140.137.218.66:8080/fateezgo-ee/place");
+        pt.execute("place");
 //        final Intent placeintent = new Intent(this, ModifyMasterActivity.class);
 //        startActivity(placeintent);
     }

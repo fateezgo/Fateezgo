@@ -32,7 +32,7 @@ public class ModifyMasterActivity extends BasicActivity {
         btn02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(getApplicationContext(),ProfessionalActivity.class);
+                Intent intent =new Intent(getApplicationContext(),IntroductionActivity.class);
                 // intent.putExtra("QTYPE", MasterListActivity.FREE);
                 startActivity(intent);
             }

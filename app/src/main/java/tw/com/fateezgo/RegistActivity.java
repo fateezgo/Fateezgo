@@ -37,13 +37,13 @@ public class RegistActivity extends BasicActivity {
 
     void registAsMaster(View v) {
         DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.52:8080/fateezgo-ee/Register?type=master&name="+firstname.getText().toString() +
+        lt.execute("Register?type=master&name="+firstname.getText().toString() +
         "&passwd=" + passwd.getText().toString() + "&phone=" + phone.getText().toString() + "&email=" + email.getText().toString());
     }
 
     void registAsMember(View v) {
         DbTask lt = new DbTask();
-        lt.execute("http://140.137.218.52:8080/fateezgo-ee/Register?type=member&name="+firstname.getText().toString() +
+        lt.execute("Register?type=member&name="+firstname.getText().toString() +
                 "&passwd=" + passwd.getText().toString() + "&phone=" + phone.getText().toString() + "&email=" + email.getText().toString());
     }
 }
