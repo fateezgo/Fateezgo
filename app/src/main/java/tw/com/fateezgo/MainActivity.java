@@ -8,6 +8,8 @@ import android.widget.Button;
 
 public class MainActivity extends BasicActivity {
 
+
+
     private Button btn01;
     private Button btn02;
     private Button btn03;
@@ -49,6 +51,8 @@ public class MainActivity extends BasicActivity {
         btn04.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Intent intent = new Intent(getApplicationContext(),MemberActivity.class);
                 startActivity(intent);
             }
@@ -67,4 +71,6 @@ public class MainActivity extends BasicActivity {
     void doViews() {
         // do nothing
     }
+
+
 }

@@ -8,13 +8,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tw.com.fateezgo.FateSelectionActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/backgbase">
 
     <TextView
         android:id="@+id/matitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="老師課程" />
+        android:text="老師課程"
+        android:textSize="30dp"
+        android:textColor="#0000FF" />
 
     <ListView
         android:id="@+id/listview_class"

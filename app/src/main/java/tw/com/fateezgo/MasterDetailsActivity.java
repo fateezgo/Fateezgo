@@ -39,10 +39,11 @@ public class MasterDetailsActivity extends BasicActivity{
         masteva = (Button) findViewById(R.id.masteva);
         fateresv = (Button) findViewById(R.id.fateresv);
 
-        final Intent intent = getIntent();
+        Intent intent = getIntent();
+        String mastuid = intent.getStringExtra("Mast_NAME");
+        System.out.println("mastuid:"+mastuid);
 
-//        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+mastname);
-        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+(intent.getIntExtra("Mast_NAME",eva)));
+        db.execute("http://140.137.218.77:8080/fateezgo-ee/getmastdet?mastname="+mastuid);
 
         fateresv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +51,7 @@ public class MasterDetailsActivity extends BasicActivity{
                 Intent intent1 = new Intent(getApplicationContext(),FateSelectionActivity.class);
                 String[] sa = strList.get(0).split(",");
                 System.out.print(sa[0]);
-                intent.putExtra("uid",Integer.valueOf(sa[0]));
+                intent1.putExtra("uid",Integer.valueOf(sa[0]));
                 startActivity(intent1);
             }
         });

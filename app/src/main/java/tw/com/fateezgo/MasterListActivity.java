@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,7 +35,8 @@ public class MasterListActivity extends AppCompatActivity {
     private ListView lvfm;
     private String qtype = "QTYPE";
     private String requestType;
-
+    int[] resIds = {R.drawable.femalemast1, R.drawable.malemast1,
+            R.drawable.malemast2, R.drawable.femalemast2};
     ArrayList<String> strList = new ArrayList<String>();
     LoginTask lt = new LoginTask();
 
@@ -79,7 +81,7 @@ public class MasterListActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),MasterDetailsActivity.class);
                 String s = lvfm.getItemAtPosition(i).toString();
                 String[] sa = s.split(",");
-                System.out.println("name:"+sa[0]);
+//                System.out.println("name:"+sa[0]);
                 intent.putExtra("Mast_NAME",sa[0]);
                 startActivity(intent);
             }
@@ -114,12 +116,14 @@ public class MasterListActivity extends AppCompatActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             view = inflater.inflate(R.layout.layout_master_list, null);
+            ImageView imgLogo = (ImageView) view.findViewById(R.id.imgMast);
             TextView txtuid = (TextView) view.findViewById(R.id.txtuid);
             TextView txtName = (TextView) view.findViewById(R.id.txtName);
             TextView txtText = (TextView) view.findViewById(R.id.txtMastProf);
 
             String[] fields = strList.get(i).split(",");
             System.out.println(fields[0]);
+            imgLogo.setImageResource(resIds[i]);
             txtuid.setText(fields[0]+"號老師");
             txtName.setText(fields[1]);
             txtText.setText("專長："+fields[2]);
