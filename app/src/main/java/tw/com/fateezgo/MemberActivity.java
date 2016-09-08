@@ -79,10 +79,11 @@ public class MemberActivity extends BasicActivity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                member.logout(getApplicationContext());
                 Intent intent=new Intent();
-//                member.setMemberData(this,)
-                intent.setClass(MemberActivity.this,ContactActivity.class);
+                intent.setClass(MemberActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }});
 
 
