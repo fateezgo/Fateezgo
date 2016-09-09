@@ -37,7 +37,7 @@ public class MasterListActivity extends BasicActivity {
     private String requestType;
     int[] resIds = {R.drawable.femalemast1, R.drawable.malemast1,
             R.drawable.malemast2, R.drawable.femalemast2};
-    ArrayList<String> strList = new ArrayList<String>();
+//    ArrayList<String> strList = new ArrayList<String>();
     DbTask lt = new DbTask();
 
     @Override
@@ -71,17 +71,16 @@ public class MasterListActivity extends BasicActivity {
     }
 
     void doViews() {
+
         MyAdapter adapter = new MyAdapter(this);
         ListView lv = (ListView) findViewById(R.id.listViewMastList);
         lv.setAdapter(adapter);
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(),MasterDetailsActivity.class);
                 String s = lvfm.getItemAtPosition(i).toString();
                 String[] sa = s.split(",");
-//                System.out.println("name:"+sa[0]);
                 intent.putExtra("Mast_NAME",sa[0]);
                 startActivity(intent);
             }
@@ -95,8 +94,6 @@ public class MasterListActivity extends BasicActivity {
             // TODO Auto-generated constructor stub
             inflater = LayoutInflater.from(m);
         }
-
-
 
         @Override
         public int getCount() {
@@ -122,7 +119,7 @@ public class MasterListActivity extends BasicActivity {
             TextView txtText = (TextView) view.findViewById(R.id.txtMastProf);
 
             String[] fields = strList.get(i).split(",");
-            System.out.println(fields[0]);
+            Log.d("MasterListActivity", fields[0]);
             imgLogo.setImageResource(resIds[i]);
             txtuid.setText(fields[0]+"號老師");
             txtName.setText(fields[1]);

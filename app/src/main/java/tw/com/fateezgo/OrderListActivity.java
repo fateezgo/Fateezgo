@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class OrderListActivity extends BasicActivity {
 
-    ArrayList<String> strList = new ArrayList<String>();
+//    ArrayList<String> strList = new ArrayList<String>();
     boolean orderlist_bl = false;
     String[] orderlist_item;
     int nameuid;
