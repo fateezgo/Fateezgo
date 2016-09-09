@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 
 public class MemberActivity extends BasicActivity {
+    private static final int FUNC_NOT_LOGIN = 100;
     // 1.宣告物件
     //
     private Button btnmember;
@@ -32,8 +33,8 @@ public class MemberActivity extends BasicActivity {
         setContentView(R.layout.activity_member);
 
         if (member.isLogin() == false) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            Intent intent = new Intent(this, NotLoginActivity.class);
+            startActivityForResult(intent, FUNC_NOT_LOGIN);
         }
 
         // 2.連結元件
@@ -99,6 +100,14 @@ public class MemberActivity extends BasicActivity {
     @Override
     void doViews() {
         // do nothing
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((requestCode == FUNC_NOT_LOGIN) && (resultCode != RESULT_OK)) {
+            finish();
+        }
     }
 }
 
