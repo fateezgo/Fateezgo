@@ -3,10 +3,10 @@
     <color name="colorPrimary">#8d7196</color>
     <color name="colorPrimaryDark">#6D5177</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="cal_summer">#44eebd82</color>
-    <color name="cal_fall">#44d8d27e</color>
-    <color name="cal_winter">#44a1c1da</color>
-    <color name="cal_spring">#448da64b</color>
+    <color name="cal_summer">#8d7196</color>
+    <color name="cal_fall">#8d7196</color>
+    <color name="cal_winter">#8d7196</color>
+    <color name="cal_spring">#8d7196</color>
     <color name="cal_grey">#878787</color>
     <color name="cal_today">#6D5177</color>
 </resources>
