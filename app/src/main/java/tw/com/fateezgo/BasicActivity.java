@@ -95,7 +95,8 @@ abstract class BasicActivity extends AppCompatActivity {
         @Override
         protected ArrayList<String> doInBackground(String... params) {
             try {
-                URL url = new URL("http://140.137.218.52:8080/fateezgo-ee/" + params[0]);
+                URL url = new URL("http://j2.snpy.org:8080/fateezgo-ee/" + params[0]);
+                //URL url = new URL("http://140.137.218.52:8080/fateezgo-ee/" + params[0]);
                 InputStream is = url.openStream();
                 BufferedReader in = new BufferedReader(new InputStreamReader(is));
                 String strLine;
