@@ -92,6 +92,7 @@ public class DetailedOrderMapsActivity extends BasicActivity implements OnMapRea
                 if (string != null) {
                     //id, memberuid, mem-name, masteruid, master-name, professional, pdate, rdate, rplace, estate, sn
                     String[] strArray = string.split(",");
+                    orderId = Integer.valueOf(strArray[0]);
                     if (Integer.valueOf(strArray[1]) == member.uid()) {
                         tvMemTitle.setText("老師：");
                         tvMaster.setText(strArray[4]);
