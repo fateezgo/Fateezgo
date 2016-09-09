@@ -40,14 +40,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TarotCard"
+                android:text="塔羅抽牌"
                 android:id="@+id/b_func"
                 android:onClick="sendFunc" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send Msg"
+                android:text="傳送訊息"
                 android:id="@+id/b_send"
                 android:onClick="sendMsg" />
         </LinearLayout>

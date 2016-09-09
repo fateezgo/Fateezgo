@@ -23,6 +23,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ConsultOnlineActivity extends BasicActivity {
@@ -43,6 +44,7 @@ public class ConsultOnlineActivity extends BasicActivity {
 
     public static class MessageViewHolder extends RecyclerView.ViewHolder {
         public TextView tvName;
+        public TextView tvTime;
         public TextView tvText;
         public ImageView imgIcon;
         public ImageView imgFunc;
@@ -50,6 +52,7 @@ public class ConsultOnlineActivity extends BasicActivity {
         public MessageViewHolder(View v) {
             super(v);
             tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            tvTime = (TextView) itemView.findViewById(R.id.tv_time);
             tvText = (TextView) itemView.findViewById(R.id.tv_text);
             imgIcon = (ImageView) itemView.findViewById(R.id.img_icon);
             imgFunc = (ImageView) itemView.findViewById(R.id.img_func);
@@ -90,6 +93,11 @@ public class ConsultOnlineActivity extends BasicActivity {
                 Log.d("ADP", "content: " + model.getContent());
                 if (model.getType().equals("MSG")) {
                     viewHolder.tvText.setText(model.getContent());
+                    long time = Long.valueOf(model.getTimestamp());
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                    Date resultdate = new Date(time);
+                    //System.out.println(sdf.format(resultdate));
+                    viewHolder.tvTime.setText(sdf.format(resultdate));
                     viewHolder.imgFunc.setImageDrawable(null);
                 }
                 else if (model.getType().equals("CARD")) {

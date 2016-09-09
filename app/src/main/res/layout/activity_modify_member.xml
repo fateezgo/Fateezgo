@@ -116,14 +116,16 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="註冊"
-            android:id="@+id/registmem" />
+            android:text="確定"
+            android:id="@+id/b_ok"
+            android:onClick="ok" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="取消"
-            android:id="@+id/cancelregist" />
+            android:id="@+id/b_cancel"
+            android:onClick="cancel" />
     </LinearLayout>
 
 

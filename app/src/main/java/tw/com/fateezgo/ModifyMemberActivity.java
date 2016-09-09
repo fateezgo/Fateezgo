@@ -2,6 +2,7 @@ package tw.com.fateezgo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 public class ModifyMemberActivity extends BasicActivity {
@@ -21,7 +22,15 @@ public class ModifyMemberActivity extends BasicActivity {
         edtpw = (EditText) findViewById(R.id.edtmempw);
         edtmail = (EditText) findViewById(R.id.edtmememail);
 
-        lt.execute("getmaster?qtype=\"+requestType");
+        //lt.execute("getmaster?qtype=\"+requestType");
+    }
+
+    void ok(View v) {
+        finish();
+    }
+
+    void cancel(View v) {
+        finish();
     }
 
     @Override
