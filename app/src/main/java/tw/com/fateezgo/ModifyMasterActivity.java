@@ -49,7 +49,7 @@ public class ModifyMasterActivity extends BasicActivity {
         btn04.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),NewListActivity.class);
+                Intent intent = new Intent(getApplicationContext(),PlaceActivity.class);
                 startActivity(intent);
             }
         });

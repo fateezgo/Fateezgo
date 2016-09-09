@@ -93,12 +93,6 @@ public class ConsultOnlineActivity extends BasicActivity {
                 Log.d("ADP", "content: " + model.getContent());
                 if (model.getType().equals("MSG")) {
                     viewHolder.tvText.setText(model.getContent());
-                    //long time = Long.valueOf(model.getTimestamp());
-                    long time = System.currentTimeMillis();
-                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-                    Date resultdate = new Date(time);
-                    //System.out.println(sdf.format(resultdate));
-                    viewHolder.tvTime.setText(sdf.format(resultdate));
                     viewHolder.imgFunc.setImageDrawable(null);
                 }
                 else if (model.getType().equals("CARD")) {
@@ -142,6 +136,11 @@ public class ConsultOnlineActivity extends BasicActivity {
                     Bitmap b = spreadLayout.createBitmap(v);
                     viewHolder.imgFunc.setImageBitmap(b);
                 }
+
+                long time = Long.valueOf(model.getTimestamp());
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                Date resultdate = new Date(time);
+                viewHolder.tvTime.setText(sdf.format(resultdate));
 
                 if (model.getFrom().equals(name)) {
                     viewHolder.tvName.setText("");
