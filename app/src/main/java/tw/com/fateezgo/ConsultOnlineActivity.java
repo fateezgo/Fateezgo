@@ -78,7 +78,7 @@ public class ConsultOnlineActivity extends BasicActivity {
         name = member.name();
         if (isMaster == false) {
             Button b = (Button) findViewById(R.id.b_func);
-            b.setText("Send Serial No");
+            b.setText("傳送憑證");
         }
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -93,7 +93,8 @@ public class ConsultOnlineActivity extends BasicActivity {
                 Log.d("ADP", "content: " + model.getContent());
                 if (model.getType().equals("MSG")) {
                     viewHolder.tvText.setText(model.getContent());
-                    long time = Long.valueOf(model.getTimestamp());
+                    //long time = Long.valueOf(model.getTimestamp());
+                    long time = System.currentTimeMillis();
                     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                     Date resultdate = new Date(time);
                     //System.out.println(sdf.format(resultdate));
