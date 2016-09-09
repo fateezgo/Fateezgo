@@ -19,8 +19,6 @@ public class IntroductionActivity extends BasicActivity {
 
     @Override
     void doViews() {
-        Intent intent = new Intent(this, ModifyMasterActivity.class);
-        startActivity(intent);
         finish();
     }
 

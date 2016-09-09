@@ -70,8 +70,6 @@ public class SetMasterScheduleActivity extends BasicActivity {
                 cv.updateCalendar(events, CustomCalendarView.CAL_SEL_MUL);
                 break;
             case SET_AVA_TIME:
-                Intent intent = new Intent(this, ModifyMasterActivity.class);
-                startActivity(intent);
                 finish();
                 break;
         }
