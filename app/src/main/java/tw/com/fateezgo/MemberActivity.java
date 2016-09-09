@@ -51,7 +51,12 @@ public class MemberActivity extends BasicActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent intent=new Intent();
-                intent.setClass(MemberActivity.this,LoginActivity.class);
+                if (member.isMaster() == true) {
+                    intent.setClass(MemberActivity.this, ModifyMasterActivity.class);
+                }
+                else {
+                    intent.setClass(MemberActivity.this, ModifyMemberActivity.class);
+                }
                 startActivity(intent);
             }});
 
